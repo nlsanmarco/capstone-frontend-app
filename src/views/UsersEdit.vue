@@ -1,7 +1,7 @@
 <template>
   <div class="user-edit">
     <form v-on:submit.prevent="editUser()">
-      <h1>Edit Profile</h1>
+      <h1>Edit User</h1>
       <ul>
         <li v-for="error in errors" v-bind:key="error">{{ error }}</li>
       </ul>
@@ -17,6 +17,55 @@
         Location (zip):
         <input type="text" v-model="editUserParams.location" />
       </div>
+      <h1>Adoption Profile</h1>
+      <h2>Required</h2>
+      <div>
+        I live in a
+        <input type="radio" v-model="editUserParams.lives_in_house" value="true" />
+        house
+
+        <input type="radio" v-model="editUserParams.lives_in_house" value="false" />
+        apartment or condo
+      </div>
+      <div>
+        Do you have a yard?
+        <input type="radio" v-model="editUserParams.has_yard" value="true" />
+        Yes
+        <input type="radio" v-model="editUserParams.has_yard" value="false" />
+        No
+      </div>
+      <div>
+        My household
+        <input type="checkbox" v-model="editUserParams.has_dogs" :value="editUserParams.has_dogs" />
+        has dogs
+        <input type="checkbox" v-model="editUserParams.has_cats" :value="editUserParams.has_cats" />
+        has cats
+        <input type="checkbox" v-model="editUserParams.has_children" :value="editUserParams.has_children" />
+        has children
+      </div>
+      <div>
+        Approximately how many hours per day are you away from home?
+        <input type="text" v-model="editUserParams.hours_away_per_day" />
+      </div>
+      <div>
+        Do you have experience with obedience training?
+        <input type="radio" v-model="editUserParams.dog_training_experience" value="true" />
+        Yes
+        <input type="radio" v-model="editUserParams.dog_training_experience" value="false" />
+        No
+      </div>
+      <div><h2>Optional</h2></div>
+      <div>
+        Preferred size:
+        <input type="text" v-model="editUserParams.preferred_size" />
+      </div>
+      <div>
+        Preferred Gender:
+        <input type="radio" v-model="editUserParams.preferred_gender" value="female" />
+        Female
+        <input type="radio" v-model="editUserParams.preferred_gender" value="male" />
+        Male
+      </div>
     </form>
     editUserParams: {{ editUserParams }}
   </div>
@@ -29,7 +78,20 @@ import axios from "axios";
 export default {
   data: function () {
     return {
-      editUserParams: {},
+      editUserParams: {
+        name: "Minnie",
+        email: "minnie@gmail.com",
+        location: "37343",
+        lives_in_house: "true",
+        has_yard: "true",
+        has_dogs: "false",
+        has_cats: "true",
+        has_children: "true",
+        hours_away_per_day: 8,
+        dog_training_experience: "true",
+        preferred_size: "small",
+        preferred_gender: "female",
+      },
       errors: [],
     };
   },
