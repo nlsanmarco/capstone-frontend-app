@@ -7,7 +7,7 @@
 <style></style>
 
 <script>
-// import axios from "axios";
+import axios from "axios";
 export default {
   data: function () {
     return {
@@ -16,7 +16,12 @@ export default {
       errors: [],
     };
   },
-  created: function () {},
+  created: function () {
+    axios.get(`/users/${this.$route.params.id}`).then((response) => {
+      console.log(response.data);
+      this.editUsersParams = response.data;
+    });
+  },
   methods: {},
 };
 </script>
