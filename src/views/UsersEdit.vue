@@ -1,6 +1,24 @@
 <template>
   <div class="user-edit">
-    <h1>{{ message }}</h1>
+    <form v-on:submit.prevent="editUser()">
+      <h1>Edit Profile</h1>
+      <ul>
+        <li v-for="error in errors" v-bind:key="error">{{ error }}</li>
+      </ul>
+      <div>
+        email:
+        <input type="text" v-model="editUserParams.email" />
+      </div>
+      <div>
+        Name:
+        <input type="text" v-model="editUserParams.name" />
+      </div>
+      <div>
+        Location (zip):
+        <input type="text" v-model="editUserParams.location" />
+      </div>
+    </form>
+    editUserParams: {{ editUserParams }}
   </div>
 </template>
 
@@ -11,7 +29,6 @@ import axios from "axios";
 export default {
   data: function () {
     return {
-      message: "This is a user edit page",
       editUserParams: {},
       errors: [],
     };
