@@ -3,7 +3,7 @@
     <div id="nav">
       <router-link to="/">Home</router-link>
       |
-      <router-link to="/users/:id/edit">Edit Profile</router-link>
+      <router-link :to="`/users/${getUserId()}/edit`">Edit Profile</router-link>
     </div>
     <router-view />
   </div>
@@ -31,3 +31,18 @@
   color: #42b983;
 }
 </style>
+<script>
+export default {
+  data: function () {
+    return {};
+  },
+  methods: {
+    isLoggedIn: function () {
+      return localStorage.jwt;
+    },
+    getUserId: function () {
+      return localStorage.user_id;
+    },
+  },
+};
+</script>

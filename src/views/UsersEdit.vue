@@ -57,7 +57,14 @@
       <div><h2>Optional</h2></div>
       <div>
         Preferred size:
-        <input type="text" v-model="editUserParams.preferred_size" />
+        <input type="checkbox" v-model="editUserParams.preferred_size" :value="small" />
+        small
+        <input type="checkbox" v-model="editUserParams.preferred_size" :value="medium" />
+        medium
+        <input type="checkbox" v-model="editUserParams.preferred_size" :value="large" />
+        large
+        <input type="checkbox" v-model="editUserParams.preferred_size" :value="xlarge" />
+        x-large
       </div>
       <div>
         Preferred Gender:
