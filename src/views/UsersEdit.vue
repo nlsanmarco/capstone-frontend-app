@@ -1,10 +1,11 @@
 <template>
-  <div class="user-edit">
+  <div class="users-edit">
     <form v-on:submit.prevent="editUser()">
       <h1>Edit User</h1>
       <ul>
         <li v-for="error in errors" v-bind:key="error">{{ error }}</li>
       </ul>
+      user: {{ user }}
       <div>
         email:
         <input type="text" v-model="editUserParams.email" />
@@ -120,12 +121,15 @@ export default {
         // special_needs: "true",
       },
       errors: [],
+      user: {},
     };
   },
   created: function () {
     axios.get(`/users/${this.$route.params.id}`).then((response) => {
       console.log(response.data);
-      this.editUsersParams = response.data;
+
+      this.editUserParams = response.data;
+      console.log(this.editUserParams);
     });
   },
   methods: {},
