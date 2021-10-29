@@ -11,6 +11,10 @@
       |
       <router-link :to="`/users/${getUserId()}/edit`">Edit Profile</router-link>
     </div>
+    <div v-if="flashMessage">
+      {{ flashMessage }}
+      <button v-on:click="flashMessage = ''">Close</button>
+    </div>
     <router-view />
   </div>
 </template>
@@ -40,7 +44,9 @@
 <script>
 export default {
   data: function () {
-    return {};
+    return {
+      flashMessage: "",
+    };
   },
   methods: {
     isLoggedIn: function () {
