@@ -1,6 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
+import Signup from "../views/Signup.vue";
 import UsersEdit from "../views/UsersEdit.vue";
 
 Vue.use(VueRouter);
@@ -11,6 +12,13 @@ const routes = [
     name: "Home",
     component: Home,
   },
+
+  {
+    path: "/signup",
+    name: "signup",
+    component: Signup,
+  },
+
   {
     path: "/users/:id/edit",
     name: "users-edit",

@@ -3,6 +3,8 @@
     <div id="nav">
       <router-link to="/">Home</router-link>
       |
+      <router-link to="/signup">Signup</router-link>
+      |
       <router-link :to="`/users/${getUserId()}/edit`">Edit Profile</router-link>
     </div>
     <router-view />
