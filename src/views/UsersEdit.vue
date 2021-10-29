@@ -5,7 +5,6 @@
       <ul>
         <li v-for="error in errors" v-bind:key="error">{{ error }}</li>
       </ul>
-      user: {{ user }}
       <div>
         email:
         <input type="text" v-model="editUserParams.email" />
@@ -92,6 +91,7 @@
         <input type="radio" v-model="editUserParams.special_needs" value="false" />
         No
       </div>
+      <input type="submit" value="Update Profile" />
     </form>
     editUserParams: {{ editUserParams }}
   </div>
@@ -104,34 +104,28 @@ import axios from "axios";
 export default {
   data: function () {
     return {
-      editUserParams: {
-        // name: "Minnie",
-        // email: "minnie@gmail.com",
-        // location: "37343",
-        // lives_in_house: "true",
-        // has_yard: "true",
-        // has_dogs: "false",
-        // has_cats: "true",
-        // has_children: "true",
-        // hours_away_per_day: 8,
-        // dog_training_experience: "true",
-        // preferred_size: "small",
-        // preferred_gender: "female",
-        // preferred_age: "baby",
-        // special_needs: "true",
-      },
+      editUserParams: {},
       errors: [],
-      user: {},
     };
   },
   created: function () {
     axios.get(`/users/${this.$route.params.id}`).then((response) => {
       console.log(response.data);
-
       this.editUserParams = response.data;
-      console.log(this.editUserParams);
     });
   },
-  methods: {},
+  methods: {
+    editUser: function () {
+      axios
+        .patch(`/users/${this.editUserParams.id}`, this.editUserParams)
+        .then((response) => {
+          console.log(response.data);
+          this.$router.push(`/users/${this.response.data.id}`);
+        })
+        .catch((error) => {
+          this.errors = error.response.data.errors;
+        });
+    },
+  },
 };
 </script>
