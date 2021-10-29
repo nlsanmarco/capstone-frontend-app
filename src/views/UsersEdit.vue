@@ -57,13 +57,13 @@
       <div><h2>Optional</h2></div>
       <div>
         Preferred size:
-        <input type="checkbox" v-model="editUserParams.preferred_size" :value="small" />
+        <input type="radio" v-model="editUserParams.preferred_size" value="small" />
         small
-        <input type="checkbox" v-model="editUserParams.preferred_size" :value="medium" />
+        <input type="radio" v-model="editUserParams.preferred_size" value="medium" />
         medium
-        <input type="checkbox" v-model="editUserParams.preferred_size" :value="large" />
+        <input type="radio" v-model="editUserParams.preferred_size" value="large" />
         large
-        <input type="checkbox" v-model="editUserParams.preferred_size" :value="xlarge" />
+        <input type="radio" v-model="editUserParams.preferred_size" value="xlarge" />
         x-large
       </div>
       <div>
@@ -72,6 +72,24 @@
         Female
         <input type="radio" v-model="editUserParams.preferred_gender" value="male" />
         Male
+      </div>
+      <div>
+        Preferred Age:
+        <input type="radio" v-model="editUserParams.preferred_age" value="baby" />
+        baby
+        <input type="radio" v-model="editUserParams.preferred_age" value="young" />
+        young
+        <input type="radio" v-model="editUserParams.preferred_age" value="adult" />
+        adult
+        <input type="radio" v-model="editUserParams.preferred_age" value="senior" />
+        senior
+      </div>
+      <div>
+        Are you interested in adopting a special needs dog?
+        <input type="radio" v-model="editUserParams.special_needs" value="true" />
+        Yes
+        <input type="radio" v-model="editUserParams.special_needs" value="false" />
+        No
       </div>
     </form>
     editUserParams: {{ editUserParams }}
@@ -98,6 +116,8 @@ export default {
         dog_training_experience: "true",
         preferred_size: "small",
         preferred_gender: "female",
+        preferred_age: "baby",
+        special_needs: "true",
       },
       errors: [],
     };
