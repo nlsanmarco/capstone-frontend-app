@@ -5,6 +5,8 @@
       |
       <router-link to="/signup">Signup</router-link>
       |
+      <router-link to="/login">Login</router-link>
+      |
       <router-link :to="`/users/${getUserId()}/edit`">Edit Profile</router-link>
     </div>
     <router-view />
