@@ -27,9 +27,9 @@ export default {
     };
   },
   created: function () {
-    axios.get(`/movies/${this.$route.params.id}`).then((response) => {
+    axios.get(`/api_dogs/${this.$route.params.api_dog_id}`).then((response) => {
       console.log(response.data);
-      this.movie = response.data;
+      this.api_dog = response.data;
     });
   },
   methods: {
