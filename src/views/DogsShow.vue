@@ -33,7 +33,7 @@ export default {
   },
   methods: {
     makeFavorite: function () {
-      axios.post(`/favorites/${this.api_dog_id}`).then((response) => {
+      axios.post(`/favorites/${this.api_dog.id}`).then((response) => {
         console.log(response.data);
         this.$router.push("/favorites");
       });

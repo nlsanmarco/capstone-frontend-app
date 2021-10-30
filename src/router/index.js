@@ -7,6 +7,7 @@ import Logout from "../views/Logout.vue";
 import UsersEdit from "../views/UsersEdit.vue";
 import DogsIndex from "../views/DogsIndex.vue";
 import DogsShow from "../views/DogsShow.vue";
+import FavoritesIndex from "../views/FavoritesIndex.vue";
 
 Vue.use(VueRouter);
 
@@ -51,6 +52,12 @@ const routes = [
     path: "/api_dogs/:api_dog_id",
     name: "dogs-show",
     component: DogsShow,
+  },
+
+  {
+    path: "/favorites",
+    name: "favorites-index",
+    component: FavoritesIndex,
   },
 ];
 

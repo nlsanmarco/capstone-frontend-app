@@ -12,6 +12,8 @@
       <router-link :to="`/users/${getUserId()}/edit`">Edit Profile</router-link>
       |
       <router-link to="/api_dogs">Dog Matches</router-link>
+      |
+      <router-link to="/favorites">Favorites</router-link>
     </div>
     <div v-if="flashMessage">
       {{ flashMessage }}
