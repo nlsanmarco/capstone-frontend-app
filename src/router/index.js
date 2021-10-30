@@ -5,6 +5,7 @@ import Signup from "../views/Signup.vue";
 import Login from "../views/Login.vue";
 import Logout from "../views/Logout.vue";
 import UsersEdit from "../views/UsersEdit.vue";
+import DogsIndex from "../views/DogsIndex.vue";
 
 Vue.use(VueRouter);
 
@@ -37,6 +38,12 @@ const routes = [
     path: "/users/:id/edit",
     name: "users-edit",
     component: UsersEdit,
+  },
+
+  {
+    path: "/api_dogs",
+    name: "dogs-index",
+    component: DogsIndex,
   },
 ];
 
