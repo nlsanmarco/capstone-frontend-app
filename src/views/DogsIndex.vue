@@ -7,6 +7,7 @@
       <h4>Primary Breed: {{ api_dog.primary_breed }}</h4>
       <h4>Location: {{ api_dog.location }}</h4>
       <p>images: {{ api_dog.primary_photo_cropped }}</p>
+      <router-link :to="`/api_dogs/${api_dog.id}`" class="btn btn-outline-secondary">See Details</router-link>
     </div>
   </div>
 </template>

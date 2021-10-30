@@ -6,6 +6,7 @@ import Login from "../views/Login.vue";
 import Logout from "../views/Logout.vue";
 import UsersEdit from "../views/UsersEdit.vue";
 import DogsIndex from "../views/DogsIndex.vue";
+import DogsShow from "../views/DogsShow.vue";
 
 Vue.use(VueRouter);
 
@@ -44,6 +45,12 @@ const routes = [
     path: "/api_dogs",
     name: "dogs-index",
     component: DogsIndex,
+  },
+
+  {
+    path: "/api_dogs/:api_dog_id",
+    name: "dogs-show",
+    component: DogsShow,
   },
 ];
 
