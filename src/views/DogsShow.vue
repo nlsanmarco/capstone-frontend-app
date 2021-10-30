@@ -34,9 +34,9 @@ export default {
   },
   methods: {
     makeFavorite: function () {
-      axios.delete(`/movies/${this.movie.id}`).then((response) => {
+      axios.post(`/favorites/${this.api_dog_id}`).then((response) => {
         console.log(response.data);
-        this.$router.push("/movies");
+        this.$router.push("/favorites");
       });
     },
   },
