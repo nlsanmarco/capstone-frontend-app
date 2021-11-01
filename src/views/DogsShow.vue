@@ -4,13 +4,14 @@
       <h1>Pupper Profile</h1>
       <h2>name: {{ api_dog.name }}</h2>
       <h4>age: {{ api_dog.age }}</h4>
-      <h4>main breed: {{ api_dog.breeds.primary }}</h4>
+      <h4>primary breed: {{ api_dog.breeds.primary }}</h4>
+      <h4 v-if="api_dog.breeds.secondary !== null">secondary breed: {{ api_dog.breeds.secondary }}</h4>
       <h4>gender: {{ api_dog.gender }}</h4>
       <h4>size: {{ api_dog.size }}</h4>
       <h4>location: {{ api_dog.contact.address.city }},{{ api_dog.contact.address.state }}</h4>
       <h4>description: {{ api_dog.description }}</h4>
       <div v-for="photo in api_dog.photos.medium" v-bind:key="photo.id">
-        <img :src="api_dog.photo" />
+        <img :src="api_dog.photo.medium" />
       </div>
     </div>
     <br />
