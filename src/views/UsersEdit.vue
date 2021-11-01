@@ -113,7 +113,7 @@ export default {
     };
   },
   created: function () {
-    axios.get(`/users/${this.$route.params.id}`).then((response) => {
+    axios.get("/users/me").then((response) => {
       console.log(response.data);
       this.editUserParams = response.data;
     });
@@ -121,7 +121,7 @@ export default {
   methods: {
     editUser: function () {
       axios
-        .patch(`/users/${this.editUserParams.id}`, this.editUserParams)
+        .patch("/users/me", this.editUserParams)
         .then((response) => {
           console.log(response.data);
           this.$parent.flashMessage = "Profile successfully updated";

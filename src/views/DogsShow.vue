@@ -9,6 +9,9 @@
       <h4>size: {{ api_dog.size }}</h4>
       <h4>location: {{ api_dog.contact.address.city }},{{ api_dog.contact.address.state }}</h4>
       <h4>description: {{ api_dog.description }}</h4>
+      <div v-for="medium in api_dog.photos.medium" v-bind:key="medium.id">
+        <img :src="api_dog.photos[0].medium" />
+      </div>
     </div>
     <br />
     <button v-on:click="makeFavorite()">Favorite</button>
