@@ -56,6 +56,15 @@
       </div>
       <div><h2>Optional</h2></div>
       <div>
+        Preferred Breed:
+        <select name="breeds">
+          <option :value="editUserParams.preferred_breed">None</option>
+          <option v-for="breed in breeds" v-bind:key="breed" :value="editUserParams.preferred_breed">
+            {{ breed }}
+          </option>
+        </select>
+      </div>
+      <div>
         Preferred size:
         <input type="radio" v-model="editUserParams.preferred_size" value="small" />
         small
@@ -110,6 +119,7 @@ export default {
   data: function () {
     return {
       editUserParams: {},
+      breeds: [],
       errors: [],
     };
   },
@@ -117,6 +127,10 @@ export default {
     axios.get("/users/me").then((response) => {
       console.log(response.data);
       this.editUserParams = response.data;
+    });
+    axios.get("/breeds").then((response) => {
+      console.log(response.data);
+      this.breeds = response.data;
     });
   },
   methods: {
