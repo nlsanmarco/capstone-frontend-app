@@ -95,7 +95,8 @@
     </form>
     <button v-on:click="destroyUser()">Delete User</button>
     <br />
-    <button v-on:click="findMatches()">Show matches</button>
+    <router-link to="/api_dogs" class="btn btn-outline-secondary">See Matches</router-link>
+    <!-- <button v-on:click="findMatches()">Show matches</button> -->
     <br />
     editUserParams: {{ editUserParams }}
   </div>
@@ -130,11 +131,11 @@ export default {
           this.errors = error.response.data.errors;
         });
     },
-    findMatches: function () {
-      axios.post("/api_dogs").then((response) => {
-        console.log(response.data);
-      });
-    },
+    // findMatches: function () {
+    //   axios.post("/api_dogs").then((response) => {
+    //     console.log(response.data);
+    //   });
+    // },
     destroyUser: function () {
       if (confirm("Are you sure you want to delete this user?")) {
         axios.delete(`/users/${this.editUserParams.id}`).then((response) => {
