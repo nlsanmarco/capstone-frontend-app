@@ -6,9 +6,7 @@
       <h4>Age: {{ api_dog.age }}</h4>
       <h4>Primary Breed: {{ api_dog.breeds.primary }}</h4>
       <h4>Location: {{ api_dog.contact.address.city }}, {{ api_dog.contact.address.state }}</h4>
-      <!-- <p>images: {{ api_dog.primary_photo_cropped.small }}</p> -->
-      <img :src="api_dog.primary_photo_cropped.small" />
-      <router-link :to="`/api_dogs/${api_dog.id}`" class="btn btn-outline-secondary">See Details</router-link>
+      <router-link :to="`/api_dogs/${api_dog.id}`"><img :src="api_dog.primary_photo_cropped.small" /></router-link>
     </div>
   </div>
 </template>

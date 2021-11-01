@@ -57,9 +57,9 @@
       <div><h2>Optional</h2></div>
       <div>
         Preferred Breed:
-        <select name="breeds">
-          <option :value="editUserParams.preferred_breed">None</option>
-          <option v-for="breed in breeds" v-bind:key="breed" :value="editUserParams.preferred_breed">
+        <select v-model="editUserParams.preferred_breed">
+          <option value="null">None</option>
+          <option v-for="breed in breeds" v-bind:key="breed" value="breed">
             {{ breed }}
           </option>
         </select>
@@ -145,11 +145,6 @@ export default {
           this.errors = error.response.data.errors;
         });
     },
-    // findMatches: function () {
-    //   axios.post("/api_dogs").then((response) => {
-    //     console.log(response.data);
-    //   });
-    // },
     destroyUser: function () {
       if (confirm("Are you sure you want to delete this user?")) {
         axios.delete(`/users/${this.editUserParams.id}`).then((response) => {
