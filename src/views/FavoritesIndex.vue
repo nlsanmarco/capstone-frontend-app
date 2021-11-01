@@ -6,6 +6,7 @@
       <h4>Age: {{ favorite.api_dog.age }}</h4>
       <h4>Primary Breed: {{ favorite.api_dog.breeds.primary }}</h4>
       <h4>Location: {{ favorite.api_dog.contact.address.city }}, {{ favorite.api_dog.contact.address.state }}</h4>
+      <img :src="favorite.api_dog.primary_photo_cropped.small" />
       <!-- <p>images: {{ favorite.primary_photo_cropped.small }}</p> -->
       <!-- <router-link :to="`/api_dogs/${favorite.api_dog_id}`" class="btn btn-outline-secondary">See Details</router-link> -->
     </div>
