@@ -104,7 +104,6 @@
         <input type="checkbox" v-model="preferred_age" value="senior" />
         senior
       </div>
-      {{ preferred_age }}
       <div>
         Are you interested in adopting a special needs dog?
         <input type="radio" v-model="editUserParams.special_needs" value="true" />

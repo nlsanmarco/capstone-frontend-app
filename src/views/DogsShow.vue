@@ -17,7 +17,7 @@
       <h2>Training:</h2>
       <h4 v-if="api_dog.attributes.house_trained === true">house trained</h4>
       <h4 v-if="api_dog.attributes.house_trained === false">not house trained</h4>
-      <div>
+      <div v-if="api_dog.environment.dogs || api_dog.environment.cats || api_dog.environment.children">
         <h2>Good in a house with:</h2>
         <h4 v-if="api_dog.environment.dogs === true">dogs</h4>
         <h4 v-if="api_dog.environment.cats === true">cats</h4>
@@ -30,7 +30,7 @@
       <h4 v-if="api_dog.attributes.spayed_neutered === false">not spayed/neutered</h4>
       <h1 v-if="api_dog.attributes.special_needs === true">special needs</h1>
       <div v-for="photo in api_dog.photos" v-bind:key="photo.id">
-        <img :src="api_dog.photos[0].full" />
+        <img :src="photo.full" />
       </div>
     </div>
     <br />
