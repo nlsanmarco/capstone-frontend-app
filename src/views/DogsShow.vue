@@ -8,20 +8,22 @@
       <h4 v-if="api_dog.breeds.secondary !== null">secondary breed: {{ api_dog.breeds.secondary }}</h4>
       <h4>gender: {{ api_dog.gender }}</h4>
       <h4>size: {{ api_dog.size }}</h4>
-      <h4>location: {{ api_dog.contact.address.city }},{{ api_dog.contact.address.state }}</h4>
       <h4>description: {{ api_dog.description }}</h4>
       <h2>Rescue Agency:{{}}</h2>
+      <h4>location: {{ api_dog.contact.address.city }},{{ api_dog.contact.address.state }}</h4>
       <h4>website:</h4>
       <h4>phone:</h4>
       <h4>email:</h4>
       <h2>Training:</h2>
       <h4>house trained:</h4>
-      <h2>Good in a house with:</h2>
-      <h4>dogs</h4>
-      <h4>cats</h4>
-      <h4>children</h4>
-      <h2>Medical</h2>
-      <h4>shots current</h4>
+      <div>
+        <h2>Good in a house with:</h2>
+        <h4 v-if="api_dog.environment.dogs === true">dogs</h4>
+        <h4 v-if="api_dog.environment.cats === true">cats</h4>
+        <h4 v-if="api_dog.environment.children === true">children</h4>
+      </div>
+      <h2>Medical:</h2>
+      <h4 v-if="api_dog.attributes.shots_current">shots current</h4>
       <h4>spayed</h4>
       <h4>special needs</h4>
       <div v-for="photo in api_dog.photos" v-bind:key="photo.id">
