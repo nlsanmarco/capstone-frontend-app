@@ -40,21 +40,18 @@
         Yes
         <input type="radio" v-model="editUserParams.has_dogs" value="false" />
         No
-        {{ editUserParams.has_dogs }}
         <br />
         has cats
         <input type="radio" v-model="editUserParams.has_cats" value="true" />
         Yes
         <input type="radio" v-model="editUserParams.has_cats" value="false" />
         No
-        {{ editUserParams.has_cats }}
         <br />
         has children
         <input type="radio" v-model="editUserParams.has_children" value="true" />
         Yes
         <input type="radio" v-model="editUserParams.has_children" value="false" />
         No
-        {{ editUserParams.has_children }}
       </div>
       <div>
         Approximately how many hours per day are you away from home?
@@ -76,18 +73,19 @@
             {{ breed }}
           </option>
         </select>
-        breed{{ editUserParams.preferred_breed }}
       </div>
       <div>
         Preferred size:
-        <input type="radio" v-model="editUserParams.preferred_size" value="small" />
+        <input type="checkbox" v-model="preferred_size" value="small" />
         small
-        <input type="radio" v-model="editUserParams.preferred_size" value="medium" />
+        <input type="checkbox" v-model="preferred_size" value="medium" />
         medium
-        <input type="radio" v-model="editUserParams.preferred_size" value="large" />
+        <input type="checkbox" v-model="preferred_size" value="large" />
         large
-        <input type="radio" v-model="editUserParams.preferred_size" value="xlarge" />
+        <input type="checkbox" v-model="preferred_size" value="xlarge" />
         x-large
+        <br />
+        {{ preferred_size }}
       </div>
       <div>
         Preferred Gender:
@@ -132,6 +130,7 @@ export default {
   data: function () {
     return {
       editUserParams: {},
+      preferred_size: [],
       breeds: [],
       errors: [],
     };
@@ -148,6 +147,7 @@ export default {
   },
   methods: {
     editUser: function () {
+      this.editUserParams.preferred_size = this.preferred_size.join(",");
       axios
         .patch("/users/me", this.editUserParams)
         .then((response) => {
