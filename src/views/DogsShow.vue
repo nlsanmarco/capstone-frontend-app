@@ -8,7 +8,11 @@
       <h4 v-if="api_dog.breeds.secondary !== null">secondary breed: {{ api_dog.breeds.secondary }}</h4>
       <h4>gender: {{ api_dog.gender }}</h4>
       <h4>size: {{ api_dog.size }}</h4>
-      <h4>description: {{ api_dog.description }}</h4>
+      <h4>
+        description: {{ api_dog.description }}
+        <a :href="api_dog.url" class="btn btn-outline-secondary">more</a>
+      </h4>
+
       <!-- <h2>Rescue Agency:{{}}</h2> -->
       <h4>location: {{ api_dog.contact.address.city }},{{ api_dog.contact.address.state }}</h4>
       <h4 v-if="api_dog.distance">distance: {{ api_dog.distance }}miles</h4>
@@ -31,7 +35,7 @@
       <h4 v-if="api_dog.attributes.spayed_neutered === false">not spayed/neutered</h4>
       <h1 v-if="api_dog.attributes.special_needs === true">special needs</h1>
       <div v-for="photo in api_dog.photos" v-bind:key="photo.id">
-        <img :src="photo.full" />
+        <img :src="photo.medium" />
       </div>
     </div>
     <br />
