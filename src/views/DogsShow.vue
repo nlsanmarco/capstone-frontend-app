@@ -24,8 +24,9 @@
       </div>
       <h2>Medical:</h2>
       <h4 v-if="api_dog.attributes.shots_current === true">Vaccinations up to date</h4>
-      <h4>spayed</h4>
-      <h4>special needs</h4>
+      <h4 v-if="api_dog.attributes.spayed_neutered === true">spayed/neutered</h4>
+      <h4 v-if="api_dog.attributes.spayed_neutered === false">not spayed/neutered</h4>
+      <h4 v-if="api_dog.attributes.special_needs === true">special needs</h4>
       <div v-for="photo in api_dog.photos" v-bind:key="photo.id">
         <img :src="api_dog.photos[0].full" />
       </div>
