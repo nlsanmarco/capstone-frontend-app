@@ -39,6 +39,7 @@
       </div>
     </div>
     <br />
+    {{ api_dog.id }}
     <button v-on:click="makeFavorite()">Favorite</button>
     <br />
     <router-link to="/api_dogs" class="btn btn-outline-secondary">back to matches</router-link>
@@ -57,14 +58,20 @@ export default {
   },
   created: function () {
     axios.get(`/api_dogs/${this.$route.params.api_dog_id}`).then((response) => {
-      console.log(response.data);
+      // console.log(response.data);
       this.api_dog = response.data;
     });
   },
   methods: {
     makeFavorite: function () {
-      axios.post(`/favorites/${this.api_dog.id}`).then((response) => {
+      this.api_dog.id = this.api_dog.id.toString();
+      var params = {
+        user_id: localStorage.getItem("user_id"),
+        api_dog_id: this.api_dog.id,
+      };
+      axios.post("/favorites", params).then((response) => {
         console.log(response.data);
+        console.log(this.api_dog.id);
         this.$router.push("/favorites");
       });
     },
