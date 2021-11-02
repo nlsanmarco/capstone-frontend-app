@@ -85,7 +85,6 @@
         <input type="checkbox" v-model="preferred_size" value="xlarge" />
         x-large
         <br />
-        {{ preferred_size }}
       </div>
       <div>
         Preferred Gender:
@@ -96,15 +95,16 @@
       </div>
       <div>
         Preferred Age:
-        <input type="radio" v-model="editUserParams.preferred_age" value="baby" />
+        <input type="checkbox" v-model="preferred_age" value="baby" />
         baby
-        <input type="radio" v-model="editUserParams.preferred_age" value="young" />
+        <input type="checkbox" v-model="preferred_age" value="young" />
         young
-        <input type="radio" v-model="editUserParams.preferred_age" value="adult" />
+        <input type="checkbox" v-model="preferred_age" value="adult" />
         adult
-        <input type="radio" v-model="editUserParams.preferred_age" value="senior" />
+        <input type="checkbox" v-model="preferred_age" value="senior" />
         senior
       </div>
+      {{ preferred_age }}
       <div>
         Are you interested in adopting a special needs dog?
         <input type="radio" v-model="editUserParams.special_needs" value="true" />
@@ -131,6 +131,7 @@ export default {
     return {
       editUserParams: {},
       preferred_size: [],
+      preferred_age: [],
       breeds: [],
       errors: [],
     };
@@ -148,6 +149,7 @@ export default {
   methods: {
     editUser: function () {
       this.editUserParams.preferred_size = this.preferred_size.join(",");
+      this.editUserParams.preferred_age = this.preferred_age.join(",");
       axios
         .patch("/users/me", this.editUserParams)
         .then((response) => {
