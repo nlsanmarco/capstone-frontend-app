@@ -35,13 +35,26 @@
         No
       </div>
       <div>
-        My household
-        <input type="checkbox" v-model="editUserParams.has_dogs" :value="editUserParams.has_dogs" />
-        has dogs
-        <input type="checkbox" v-model="editUserParams.has_cats" :value="editUserParams.has_cats" />
+        My household has dogs
+        <input type="radio" v-model="editUserParams.has_dogs" value="true" />
+        Yes
+        <input type="radio" v-model="editUserParams.has_dogs" value="false" />
+        No
+        {{ editUserParams.has_dogs }}
+        <br />
         has cats
-        <input type="checkbox" v-model="editUserParams.has_children" :value="editUserParams.has_children" />
+        <input type="radio" v-model="editUserParams.has_cats" value="true" />
+        Yes
+        <input type="radio" v-model="editUserParams.has_cats" value="false" />
+        No
+        {{ editUserParams.has_cats }}
+        <br />
         has children
+        <input type="radio" v-model="editUserParams.has_children" value="true" />
+        Yes
+        <input type="radio" v-model="editUserParams.has_children" value="false" />
+        No
+        {{ editUserParams.has_children }}
       </div>
       <div>
         Approximately how many hours per day are you away from home?
@@ -58,11 +71,12 @@
       <div>
         Preferred Breed:
         <select v-model="editUserParams.preferred_breed">
-          <option value="null">None</option>
-          <option v-for="breed in breeds" v-bind:key="breed" value="breed">
+          <option value="">None</option>
+          <option v-for="breed in breeds" v-bind:key="breed.id">
             {{ breed }}
           </option>
         </select>
+        breed{{ editUserParams.preferred_breed }}
       </div>
       <div>
         Preferred size:

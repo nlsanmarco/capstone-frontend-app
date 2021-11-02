@@ -15,7 +15,8 @@
       <h4>phone:</h4>
       <h4>email:</h4>
       <h2>Training:</h2>
-      <h4>house trained:</h4>
+      <h4 v-if="api_dog.attributes.house_trained === true">house trained</h4>
+      <h4 v-if="api_dog.attributes.house_trained === false">not house trained</h4>
       <div>
         <h2>Good in a house with:</h2>
         <h4 v-if="api_dog.environment.dogs === true">dogs</h4>
@@ -24,9 +25,10 @@
       </div>
       <h2>Medical:</h2>
       <h4 v-if="api_dog.attributes.shots_current === true">Vaccinations up to date</h4>
+      <h4 v-if="api_dog.attributes.shots_current === false">Some vaccinations needed</h4>
       <h4 v-if="api_dog.attributes.spayed_neutered === true">spayed/neutered</h4>
       <h4 v-if="api_dog.attributes.spayed_neutered === false">not spayed/neutered</h4>
-      <h4 v-if="api_dog.attributes.special_needs === true">special needs</h4>
+      <h1 v-if="api_dog.attributes.special_needs === true">special needs</h1>
       <div v-for="photo in api_dog.photos" v-bind:key="photo.id">
         <img :src="api_dog.photos[0].full" />
       </div>
