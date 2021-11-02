@@ -9,11 +9,12 @@
       <h4>gender: {{ api_dog.gender }}</h4>
       <h4>size: {{ api_dog.size }}</h4>
       <h4>description: {{ api_dog.description }}</h4>
-      <h2>Rescue Agency:{{}}</h2>
+      <!-- <h2>Rescue Agency:{{}}</h2> -->
       <h4>location: {{ api_dog.contact.address.city }},{{ api_dog.contact.address.state }}</h4>
-      <h4>website:</h4>
-      <h4>phone:</h4>
-      <h4>email:</h4>
+      <h4 v-if="api_dog.distance">distance: {{ api_dog.distance }}miles</h4>
+      <!-- <h4>website:</h4> -->
+      <h4>phone:{{ api_dog.contact.phone }}</h4>
+      <h4>email:{{ api_dog.contact.email }}</h4>
       <h2>Training:</h2>
       <h4 v-if="api_dog.attributes.house_trained === true">house trained</h4>
       <h4 v-if="api_dog.attributes.house_trained === false">not house trained</h4>
