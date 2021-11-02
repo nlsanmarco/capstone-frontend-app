@@ -23,7 +23,7 @@
         <h4 v-if="api_dog.environment.children === true">children</h4>
       </div>
       <h2>Medical:</h2>
-      <h4 v-if="api_dog.attributes.shots_current">shots current</h4>
+      <h4 v-if="api_dog.attributes.shots_current === true">Vaccinations up to date</h4>
       <h4>spayed</h4>
       <h4>special needs</h4>
       <div v-for="photo in api_dog.photos" v-bind:key="photo.id">
