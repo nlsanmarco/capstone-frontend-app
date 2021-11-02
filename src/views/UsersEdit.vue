@@ -105,7 +105,6 @@
     <button v-on:click="destroyUser()">Delete User</button>
     <br />
     <router-link to="/api_dogs" class="btn btn-outline-secondary">See Matches</router-link>
-    <!-- <button v-on:click="findMatches()">Show matches</button> -->
     <br />
     editUserParams: {{ editUserParams }}
   </div>

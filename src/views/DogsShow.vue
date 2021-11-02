@@ -30,6 +30,8 @@
     </div>
     <br />
     <button v-on:click="makeFavorite()">Favorite</button>
+    <br />
+    <router-link to="/api_dogs" class="btn btn-outline-secondary">back to matches</router-link>
   </div>
 </template>
 
