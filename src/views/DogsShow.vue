@@ -32,6 +32,12 @@
         <h4 v-if="api_dog.environment.cats === true">cats</h4>
         <h4 v-if="api_dog.environment.children === true">children</h4>
       </div>
+      <div v-if="api_dog.environment.dogs || api_dog.environment.cats || api_dog.environment.children">
+        <h2>Prefers a home without:</h2>
+        <h4 v-if="api_dog.environment.dogs === false">dogs</h4>
+        <h4 v-if="api_dog.environment.cats === false">cats</h4>
+        <h4 v-if="api_dog.environment.children === false">children</h4>
+      </div>
       <h2>Medical:</h2>
       <h4 v-if="api_dog.attributes.shots_current === true">Vaccinations up to date</h4>
       <h4 v-if="api_dog.attributes.shots_current === false">Some vaccinations needed</h4>
