@@ -53,7 +53,57 @@ import axios from "axios";
 export default {
   data: function () {
     return {
-      api_dog: {},
+      api_dog: {
+        name: "",
+        age: "",
+        attributes: {
+          house_trained: "",
+          shots_current: "",
+          spayed_neutered: "",
+          special_needs: "",
+        },
+        id: "",
+        breeds: {
+          primary: "",
+          secondary: "",
+        },
+        contact: {
+          address: {
+            address1: "",
+            address2: "",
+            city: "",
+            state: "",
+            postcode: "",
+          },
+          email: "",
+          phone: "",
+        },
+        description: "",
+        distance: "",
+        environment: {
+          cats: "",
+          dogs: "",
+          children: "",
+        },
+        gender: "",
+        organization_id: "",
+        photos: [
+          {
+            full: "",
+            large: "",
+            medium: "",
+            small: "",
+          },
+        ],
+        primary_photo_cropped: {
+          full: "",
+          large: "",
+          medium: "",
+          small: "",
+        },
+        size: "",
+        url: "",
+      },
     };
   },
   created: function () {
