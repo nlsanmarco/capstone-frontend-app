@@ -14,7 +14,11 @@
       </h4>
 
       <!-- <h2>Rescue Agency:{{}}</h2> -->
-      <h4>location: {{ api_dog.contact.address.city }},{{ api_dog.contact.address.state }}</h4>
+      <h4>
+        location: {{ api_dog.contact.address.address1 }} {{ api_dog.contact.address.address2 }}
+        <br />
+        {{ api_dog.contact.address.city }},{{ api_dog.contact.address.state }}
+      </h4>
       <h4 v-if="api_dog.distance">distance: {{ api_dog.distance }}miles</h4>
       <!-- <h4>website:</h4> -->
       <h4>phone:{{ api_dog.contact.phone }}</h4>
