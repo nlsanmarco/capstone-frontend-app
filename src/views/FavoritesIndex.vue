@@ -12,6 +12,11 @@
       <router-link :to="`/api_dogs/${favorite.api_dog.id}`">
         <img :src="favorite.api_dog.primary_photo_cropped.small" />
       </router-link>
+      <br />
+      <router-link to="/api_dogs" class="btn btn-outline-secondary">back to matches</router-link>
+      <br />
+      <button v-on:click="removeFavorite(favorite)">remove from favorites</button>
+      {{ favorite.id }}
     </div>
   </div>
 </template>
@@ -23,7 +28,18 @@ import axios from "axios";
 export default {
   data: function () {
     return {
-      favorites: [],
+      favorites: [
+        {
+          api_dog: {
+            name: "",
+            id: "",
+            breeds: {
+              primary: "",
+              secondary: "",
+            },
+          },
+        },
+      ],
     };
   },
   created: function () {
@@ -32,6 +48,22 @@ export default {
       this.favorites = response.data;
     });
   },
-  methods: {},
+  methods: {
+    removeFavorite: function (favorite) {
+      if (confirm("Are you sure you want to remove this dog from your favorites?")) {
+        axios
+          .delete(`/favorites/${favorite.id}`)
+          .then((response) => {
+            console.log(response.data);
+            var index = this.favorites.indexOf(favorite);
+            this.favorites.splice(index, 1);
+          })
+          .catch((error) => {
+            this.status = error.response.status;
+            this.errors = error.response.data.errors;
+          });
+      }
+    },
+  },
 };
 </script>

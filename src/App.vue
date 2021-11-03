@@ -1,19 +1,27 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link>
-      |
-      <router-link to="/signup">Signup</router-link>
-      |
-      <router-link to="/login">Login</router-link>
-      |
-      <router-link to="/logout">Logout</router-link>
-      |
-      <router-link :to="`/users/${getUserId()}/edit`">Edit Profile</router-link>
-      |
-      <router-link to="/api_dogs">Dog Matches</router-link>
-      |
-      <router-link to="/favorites">Favorites</router-link>
+      <ul>
+        <li><router-link to="/">Home</router-link></li>
+        <li v-if="!isLoggedIn()">
+          <router-link to="/signup">Signup</router-link>
+        </li>
+        <li v-if="!isLoggedIn()">
+          <router-link to="/login">Login</router-link>
+        </li>
+        <li v-if="isLoggedIn()">
+          <router-link to="/logout">Logout</router-link>
+        </li>
+        <li>
+          <router-link :to="`/users/${getUserId()}/edit`">Edit Profile</router-link>
+        </li>
+        <li>
+          <router-link to="/api_dogs">Dog Matches</router-link>
+        </li>
+        <li>
+          <router-link to="/favorites">Favorites</router-link>
+        </li>
+      </ul>
     </div>
     <div v-if="flashMessage">
       {{ flashMessage }}

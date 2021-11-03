@@ -58,7 +58,6 @@ export default {
   },
   created: function () {
     axios.get(`/api_dogs/${this.$route.params.api_dog_id}`).then((response) => {
-      // console.log(response.data);
       this.api_dog = response.data;
     });
   },
