@@ -26,7 +26,11 @@
       <h2>Training:</h2>
       <h4 v-if="api_dog.attributes.house_trained === true">house trained</h4>
       <h4 v-if="api_dog.attributes.house_trained === false">not house trained</h4>
-      <div v-if="api_dog.environment.dogs || api_dog.environment.cats || api_dog.environment.children">
+      <div
+        v-if="
+          api_dog.environment.dogs == true || api_dog.environment.cats == true || api_dog.environment.children == true
+        "
+      >
         <h2>Good in a house with:</h2>
         <h4 v-if="api_dog.environment.dogs === true">dogs</h4>
         <h4 v-if="api_dog.environment.cats === true">cats</h4>
