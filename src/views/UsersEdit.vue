@@ -112,6 +112,8 @@
         Yes
         <input type="radio" v-model="editUserParams.special_needs" value="false" />
         No
+        <input type="radio" v-model="editUserParams.special_needs" value="" />
+        No preference
       </div>
       <input type="submit" value="Update Profile" />
     </form>
