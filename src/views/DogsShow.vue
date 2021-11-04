@@ -27,6 +27,27 @@
       </h4>
       <h4>phone:{{ organization.phone }}</h4>
       <h4>email:{{ organization.email }}</h4>
+      <div
+        v-if="
+          organization.hours.monday ||
+          organization.hours.tuesday ||
+          organization.hours.wednesday ||
+          organization.hours.thursday ||
+          organization.hours.friday ||
+          organization.hours.saturday ||
+          organization.hours.sunday
+        "
+      >
+        Agency Hours:
+        <h4 v-if="organization.hours.monday">Monday: {{ organization.hours.monday }}</h4>
+        <h4 v-if="organization.hours.tuesday">Tuesday: {{ organization.hours.tuesday }}</h4>
+        <h4 v-if="organization.hours.wednesday">Wednesday: {{ organization.hours.wednesday }}</h4>
+        <h4 v-if="organization.hours.thursday">Thursday: {{ organization.hours.thursday }}</h4>
+        <h4 v-if="organization.hours.friday">Friday: {{ organization.hours.friday }}</h4>
+        <h4 v-if="organization.hours.saturday">Saturday: {{ organization.hours.saturday }}</h4>
+        <h4 v-if="organization.hours.sunday">Sunday: {{ organization.hours.sunday }}</h4>
+      </div>
+
       <h2>Training:</h2>
       <h4 v-if="api_dog.attributes.house_trained === true">house trained</h4>
       <h4 v-if="api_dog.attributes.house_trained === false">not house trained</h4>
