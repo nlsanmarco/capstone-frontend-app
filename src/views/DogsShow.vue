@@ -13,16 +13,20 @@
         <a :href="api_dog.url" class="btn btn-outline-secondary">more</a>
       </h4>
 
-      <!-- <h2>Rescue Agency:{{}}</h2> -->
+      <h2>Rescue Agency:{{ organization.name }}</h2>
       <h4>
-        location: {{ api_dog.contact.address.address1 }} {{ api_dog.contact.address.address2 }}
+        location: {{ organization.address.address1 }}
         <br />
-        {{ api_dog.contact.address.city }},{{ api_dog.contact.address.state }}
+        {{ organization.address.address2 }}
+        <br />
+        {{ organization.address.city }},{{ organization.address.state }}
       </h4>
       <h4 v-if="api_dog.distance">distance: {{ api_dog.distance }}miles</h4>
-      <!-- <h4>website:</h4> -->
-      <h4>phone:{{ api_dog.contact.phone }}</h4>
-      <h4>email:{{ api_dog.contact.email }}</h4>
+      <h4>
+        <a :href="organization.website" class="btn btn-outline-secondary">agency website</a>
+      </h4>
+      <h4>phone:{{ organization.phone }}</h4>
+      <h4>email:{{ organization.email }}</h4>
       <h2>Training:</h2>
       <h4 v-if="api_dog.attributes.house_trained === true">house trained</h4>
       <h4 v-if="api_dog.attributes.house_trained === false">not house trained</h4>
@@ -124,11 +128,37 @@ export default {
         size: "",
         url: "",
       },
+      organization: {
+        name: "",
+        email: "",
+        phone: "",
+        address: {
+          address1: "",
+          address2: "",
+          city: "",
+          state: "",
+          postcode: "",
+        },
+        hours: {
+          monday: "",
+          tuesday: "",
+          wednesday: "",
+          thursday: "",
+          friday: "",
+          saturday: "",
+          sunday: "",
+        },
+        website: "",
+      },
     };
   },
   created: function () {
     axios.get(`/api_dogs/${this.$route.params.api_dog_id}`).then((response) => {
       this.api_dog = response.data;
+      axios.get(`/organizations/${this.api_dog.organization_id}`).then((response) => {
+        this.organization = response.data;
+        console.log(this.organization);
+      });
     });
   },
   methods: {
