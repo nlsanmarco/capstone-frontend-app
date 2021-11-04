@@ -92,6 +92,8 @@
         Female
         <input type="radio" v-model="editUserParams.preferred_gender" value="male" />
         Male
+        <input type="radio" v-model="editUserParams.preferred_gender" value="" />
+        No preference
       </div>
       <div>
         Preferred Age:
