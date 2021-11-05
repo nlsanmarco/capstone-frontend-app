@@ -13,10 +13,10 @@
         Name:
         <input type="text" v-model="editUserParams.name" />
       </div>
-      <div>
+      <!-- <div>
         Location (zip):
         <input type="text" v-model="editUserParams.location" />
-      </div>
+      </div> -->
       <h1>Adoption Profile</h1>
       <h2>Required</h2>
       <div>
