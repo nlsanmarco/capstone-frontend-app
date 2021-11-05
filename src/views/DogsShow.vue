@@ -84,8 +84,9 @@
       </div>
     </div>
     <br />
-    {{ api_dog.id }}
-    <button v-on:click="makeFavorite()">Favorite</button>
+    <div v-if="api_dog.favorite_dog === false">
+      <button v-on:click="makeFavorite()">Favorite</button>
+    </div>
     <br />
     <router-link to="/api_dogs" class="btn btn-outline-secondary">back to matches</router-link>
   </div>
@@ -148,6 +149,7 @@ export default {
         },
         size: "",
         url: "",
+        favorite_dog: "",
       },
       organization: {
         name: "",
