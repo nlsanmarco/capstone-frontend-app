@@ -26,13 +26,13 @@
             <div class="header-brand">
               <a class="header-brand-text" href="index.html" title="Home">
                 <h1 class="h2">
-                  <span class="header-brand-text-alt">App</span>
-                  Strap
+                  <span class="header-brand-text-alt">TN</span>
+                  Dog
                   <span class="header-brand-text-alt">.</span>
                 </h1>
               </a>
               <div class="header-divider d-none d-lg-block"></div>
-              <div class="header-slogan d-none d-lg-block">Bootstrap 4 Theme</div>
+              <div class="header-slogan d-none d-lg-block">Find your rescue match!</div>
             </div>
             <!-- other header content -->
             <div class="header-block order-12">
