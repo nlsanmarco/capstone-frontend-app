@@ -46,6 +46,7 @@
               >
                 <i class="fa fa-bars"></i>
               </a>
+              <!--Show/hide trigger for #offcanvas-sidebar -->
             </div>
 
             <div class="navbar navbar-expand-md navbar-static-top">

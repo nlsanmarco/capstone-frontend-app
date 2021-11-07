@@ -1,20 +1,41 @@
 <template>
-  <div class="login">
-    <form v-on:submit.prevent="submit()">
-      <h1>Login</h1>
-      <ul>
-        <li v-for="error in errors" v-bind:key="error">{{ error }}</li>
-      </ul>
-      <div>
-        <label>Email:</label>
-        <input type="email" v-model="newSessionParams.email" />
-      </div>
-      <div>
-        <label>Password:</label>
-        <input type="password" v-model="newSessionParams.password" />
-      </div>
-      <input type="submit" value="Submit" />
-    </form>
+  <div id="content">
+    <div class="container">
+      <!-- Login form -->
+      <form class="form-login form-wrapper form-narrow" v-on:submit.prevent="submit()">
+        <h3 class="title-divider">
+          <ul>
+            <li v-for="error in errors" v-bind:key="error">{{ error }}</li>
+          </ul>
+          <span>Login</span>
+          <small class="mt-4">
+            Not signed up?
+            <router-link to="/signup">Sign Up Here</router-link>
+          </small>
+        </h3>
+        <div class="form-group">
+          <label class="sr-only" for="login-email-page">Email</label>
+          <input
+            type="email"
+            id="login-email-page"
+            class="form-control email"
+            placeholder="Email"
+            v-model="newSessionParams.email"
+          />
+        </div>
+        <div class="form-group">
+          <label class="sr-only" for="login-password-page">Password</label>
+          <input
+            type="password"
+            id="login-password-page"
+            class="form-control password"
+            placeholder="Password"
+            v-model="newSessionParams.password"
+          />
+        </div>
+        <input type="submit" value="Login" class="btn btn-primary" />
+      </form>
+    </div>
   </div>
 </template>
 
