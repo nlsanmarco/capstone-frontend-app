@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <!-- ======== @Region: #header ======== -->
-    <div id="header" class="page page-index navbar-layout-default">
+    <div id="header">
       <div data-toggle="sticky">
         <!--Header search region - hidden by default -->
         <div class="header-search collapse" id="search">
@@ -53,93 +53,31 @@
               <!--everything within this div is collapsed on mobile-->
               <div class="navbar-main collapse">
                 <!--main navigation-->
-                <ul class="nav navbar-nav navbar-nav-stretch float-lg-right dropdown-effect-fade">
-                  <li class="nav-item dropdown">
-                    <router-link
-                      class="nav-link dropdown-toggle"
-                      id="pages-drop"
-                      data-toggle="dropdown"
-                      data-hover="dropdown"
-                      to="/"
-                    >
-                      Home
-                    </router-link>
+                <ul class="nav navbar-nav navbar-nav-stretch float-lg-right">
+                  <li class="nav-link">
+                    <router-link to="/">Home</router-link>
                   </li>
-                  <li class="nav-item dropdown" v-if="!isLoggedIn()">
-                    <router-link
-                      class="nav-link dropdown-toggle"
-                      id="pages-drop"
-                      data-toggle="dropdown"
-                      data-hover="dropdown"
-                      to="/signup"
-                    >
-                      Signup
-                    </router-link>
+                  <li class="nav-link" v-if="!isLoggedIn()">
+                    <router-link to="/signup">Signup</router-link>
                   </li>
-                  <li class="nav-item dropdown" v-if="!isLoggedIn()">
-                    <router-link
-                      class="nav-link dropdown-toggle"
-                      id="pages-drop"
-                      data-toggle="dropdown"
-                      data-hover="dropdown"
-                      to="/login"
-                    >
-                      Login
-                    </router-link>
+                  <li class="nav-link" v-if="!isLoggedIn()">
+                    <router-link to="/login">Login</router-link>
                   </li>
-                  <li class="nav-item dropdown" v-if="isLoggedIn()">
-                    <router-link
-                      class="nav-link dropdown-toggle"
-                      id="pages-drop"
-                      data-toggle="dropdown"
-                      data-hover="dropdown"
-                      to="/logout"
-                    >
-                      Logout
-                    </router-link>
+                  <li class="nav-link" v-if="isLoggedIn()">
+                    <router-link to="/logout">Logout</router-link>
                   </li>
-                  <li class="nav-item dropdown">
-                    <router-link
-                      class="nav-link dropdown-toggle"
-                      id="pages-drop"
-                      data-toggle="dropdown"
-                      data-hover="dropdown"
-                      :to="`/users/${getUserId()}/edit`"
-                    >
-                      Edit Profile
-                    </router-link>
+                  <li class="nav-link">
+                    <router-link :to="`/users/${getUserId()}/edit`">Edit Profile</router-link>
                   </li>
-                  <li class="nav-item dropdown">
-                    <router-link
-                      class="nav-link dropdown-toggle"
-                      id="pages-drop"
-                      data-toggle="dropdown"
-                      data-hover="dropdown"
-                      to="/api_dogs"
-                    >
-                      Dog Matches
-                    </router-link>
+                  <li class="nav-link">
+                    <router-link to="/api_dogs">Dog Matches</router-link>
                   </li>
-                  <li class="nav-item dropdown">
-                    <router-link
-                      class="nav-link dropdown-toggle"
-                      id="pages-drop"
-                      data-toggle="dropdown"
-                      data-hover="dropdown"
-                      to="/favorites"
-                    >
-                      Favorites
-                    </router-link>
+                  <li class="nav-link">
+                    <router-link to="/favorites">Favorites</router-link>
                   </li>
                 </ul>
               </div>
               <!--/.navbar-collapse -->
-              <!--
-                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle">
-                      <router-link to="/favorites">Favorites</router-link>
-                    </a>
-                  </li> -->
             </div>
           </div>
         </div>
