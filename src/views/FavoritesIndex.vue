@@ -1,7 +1,13 @@
 <template>
   <div class="favorites-index">
+    <p class="col-md-8 fs-4">Search by age (baby, young, adult or senior) or by name</p>
+    <div class="row">
+      <div class="col-md-12 col-lg-8 mb-2">
+        <input type="text" class="form-control" placeholder="Search" v-model="ageFilter" list="ages" />
+      </div>
+    </div>
     <h1>Your Favorites</h1>
-    <div v-for="favorite in favorites" v-bind:key="favorite.id">
+    <div v-for="favorite in filterBy(favorites, ageFilter, 'api_dog.age', 'api_dog.name')" v-bind:key="favorite.id">
       <h2>Name: {{ favorite.api_dog.name }}</h2>
       <h4>Age: {{ favorite.api_dog.age }}</h4>
       <h4>Primary Breed: {{ favorite.api_dog.breeds.primary }}</h4>
@@ -25,9 +31,12 @@
 
 <script>
 import axios from "axios";
+import Vue2Filters from "vue2-filters";
 export default {
+  mixins: [Vue2Filters.mixin],
   data: function () {
     return {
+      ageFilter: "",
       favorites: [
         {
           api_dog: {

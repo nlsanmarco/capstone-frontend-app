@@ -8,6 +8,7 @@ import UsersEdit from "../views/UsersEdit.vue";
 import DogsIndex from "../views/DogsIndex.vue";
 import DogsShow from "../views/DogsShow.vue";
 import FavoritesIndex from "../views/FavoritesIndex.vue";
+import Contact from "../views/Contact.vue";
 
 Vue.use(VueRouter);
 
@@ -58,6 +59,11 @@ const routes = [
     path: "/favorites",
     name: "favorites-index",
     component: FavoritesIndex,
+  },
+  {
+    path: "/contact",
+    name: "agency-contact",
+    component: Contact,
   },
 ];
 

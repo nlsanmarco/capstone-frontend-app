@@ -1,7 +1,14 @@
 <template>
   <div class="dogs-index">
+    <p class="col-md-8 fs-4">Search by age (baby, young, adult or senior)</p>
+    <div class="row">
+      <div class="col-md-12 col-lg-8 mb-2">
+        <input type="text" class="form-control" placeholder="Search" v-model="ageFilter" list="ages" />
+      </div>
+    </div>
+
     <h1>Your Matches</h1>
-    <div v-for="api_dog in api_dogs" v-bind:key="api_dog.id">
+    <div v-for="api_dog in filterBy(api_dogs, ageFilter, 'age')" v-bind:key="api_dog.id">
       <div v-if="api_dog.primary_photo_cropped !== null">
         <h2>Name: {{ api_dog.name }}</h2>
         <h4>Age: {{ api_dog.age }}</h4>
@@ -18,9 +25,12 @@
 
 <script>
 import axios from "axios";
+import Vue2Filters from "vue2-filters";
 export default {
+  mixins: [Vue2Filters.mixin],
   data: function () {
     return {
+      ageFilter: "",
       api_dogs: [
         {
           name: "",
