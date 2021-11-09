@@ -1,84 +1,188 @@
 <template>
   <div class="dogs-show">
+    <div id="content">
+      <div class="container">
+        <h2 class="title-divider">
+          <span>
+            Pupple
+            <span class="font-weight-normal text-muted">Profile</span>
+          </span>
+          <small>
+            <router-link to="/api_dogs">
+              <i class="fa fa-arrow-left"></i>
+              back to matches
+            </router-link>
+          </small>
+        </h2>
+        <!--Main Content-->
+        <div class="col-md-9">
+          <!-- Blog post -->
+          <div class="row blog-post">
+            <div class="col-md-11">
+              <div class="media-body">
+                <h3 class="title media-heading">{{ api_dog.name }}</h3>
+
+                <!--Main content of post-->
+                <div class="blog-content">
+                  <div class="blog-media">
+                    <img src="assets/img/blog/ape.jpg" alt="Picture of frog by Ben Fredericson" class="img-fluid" />
+                  </div>
+                  <p>age: {{ api_dog.age }}</p>
+                  <p>primary breed: {{ api_dog.breeds.primary }}</p>
+                  <p v-if="api_dog.breeds.secondary !== null">secondary breed: {{ api_dog.breeds.secondary }}</p>
+                  <p>gender: {{ api_dog.gender }}</p>
+                  <p>size: {{ api_dog.size }}</p>
+                  <p>
+                    description: {{ api_dog.description }}
+                    <a :href="api_dog.url" class="btn btn-outline-secondary">more</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="row">
+                <div class="col-md-6">
+                  <h4><span class="font-weight-bold">Rescue Agency</span></h4>
+                  <p>
+                    {{ organization.name }}
+                    <br />
+                  </p>
+                  location:
+                  <div v-if="organization.address.address1">
+                    {{ organization.address.address1 }}
+                  </div>
+                  <div v-if="organization.address.address2">
+                    {{ organization.address.address2 }}
+                  </div>
+                  {{ organization.address.city }},{{ organization.address.state }}
+                  <br />
+                  <br />
+                  <p>
+                    phone:{{ organization.phone }}
+                    <br />
+                    email:{{ organization.email }}
+                  </p>
+                  <div
+                    v-if="
+                      organization.hours.monday ||
+                      organization.hours.tuesday ||
+                      organization.hours.wednesday ||
+                      organization.hours.thursday ||
+                      organization.hours.friday ||
+                      organization.hours.saturday ||
+                      organization.hours.sunday
+                    "
+                  >
+                    <br />
+                    Agency Hours:
+                    <h4 v-if="organization.hours.monday">Monday: {{ organization.hours.monday }}</h4>
+                    <h4 v-if="organization.hours.tuesday">Tuesday: {{ organization.hours.tuesday }}</h4>
+                    <h4 v-if="organization.hours.wednesday">Wednesday: {{ organization.hours.wednesday }}</h4>
+                    <h4 v-if="organization.hours.thursday">Thursday: {{ organization.hours.thursday }}</h4>
+                    <h4 v-if="organization.hours.friday">Friday: {{ organization.hours.friday }}</h4>
+                    <h4 v-if="organization.hours.saturday">Saturday: {{ organization.hours.saturday }}</h4>
+                    <h4 v-if="organization.hours.sunday">Sunday: {{ organization.hours.sunday }}</h4>
+                  </div>
+                  <br />
+
+                  <a :href="organization.website" class="btn btn-outline-secondary">agency website</a>
+                </div>
+                <div class="col-md-6">
+                  <div v-if="api_dog.attributes.house_trained">
+                    <h5>Training:</h5>
+                    <ul class="list-unstyled list-md">
+                      <li v-if="api_dog.attributes.house_trained === true">
+                        <i class="fa fa-check text-primary list-item-icon"></i>
+                        House Trained
+                      </li>
+                      <li v-if="api_dog.attributes.house_trained === false">
+                        <i class="fa fa-check text-primary list-item-icon"></i>
+                        Not House Trained
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div
+                    v-if="
+                      api_dog.environment.dogs == true ||
+                      api_dog.environment.cats == true ||
+                      api_dog.environment.children == true
+                    "
+                  >
+                    <h5>Good in a house with:</h5>
+                    <ul class="list-unstyled list-md">
+                      <li v-if="api_dog.environment.dogs === true">
+                        <i class="fa fa-check text-primary list-item-icon"></i>
+                        Dogs
+                      </li>
+                      <li v-if="api_dog.environment.cats === true">
+                        <i class="fa fa-check text-primary list-item-icon"></i>
+                        Cats
+                      </li>
+                      <li v-if="api_dog.environment.children === true">
+                        <i class="fa fa-check text-primary list-item-icon"></i>
+                        Children
+                      </li>
+                    </ul>
+                  </div>
+                  <div
+                    v-if="
+                      api_dog.environment.dogs == false ||
+                      api_dog.environment.cats == false ||
+                      api_dog.environment.children == false
+                    "
+                  >
+                    <h5>Prefers a home without:</h5>
+                    <ul class="list-unstyled list-md">
+                      <li v-if="api_dog.environment.dogs === false">
+                        <i class="fa fa-check text-primary list-item-icon"></i>
+                        Dogs
+                      </li>
+                      <li v-if="api_dog.environment.cats === false">
+                        <i class="fa fa-check text-primary list-item-icon"></i>
+                        Cats
+                      </li>
+                      <li v-if="api_dog.environment.children === false">
+                        <i class="fa fa-check text-primary list-item-icon"></i>
+                        Children
+                      </li>
+                    </ul>
+                  </div>
+                  <h5>Medical:</h5>
+                  <ul class="list-unstyled list-md">
+                    <li v-if="api_dog.attributes.shots_current === true">
+                      <i class="fa fa-check text-primary list-item-icon"></i>
+                      Vaccinations up to date
+                    </li>
+                    <li v-if="api_dog.attributes.shots_current === false">
+                      <i class="fa fa-check text-primary list-item-icon"></i>
+                      Some vaccinations needed
+                    </li>
+                    <li v-if="api_dog.attributes.spayed_neutered === true">
+                      <i class="fa fa-check text-primary list-item-icon"></i>
+                      Spayed / Neutered
+                    </li>
+                    <li v-if="api_dog.attributes.spayed_neutered === false">
+                      <i class="fa fa-check text-primary list-item-icon"></i>
+                      Not Spayed / Neutered
+                    </li>
+                    <li v-if="api_dog.attributes.special_needs === true">
+                      <i class="fa fa-check text-primary list-item-icon"></i>
+                      Special Needs
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <div>
-      <h1>Pupper Profile</h1>
-      <h2>name: {{ api_dog.name }}</h2>
-      <h4>age: {{ api_dog.age }}</h4>
-      <h4>primary breed: {{ api_dog.breeds.primary }}</h4>
-      <h4 v-if="api_dog.breeds.secondary !== null">secondary breed: {{ api_dog.breeds.secondary }}</h4>
-      <h4>gender: {{ api_dog.gender }}</h4>
-      <h4>size: {{ api_dog.size }}</h4>
-      <h4>
-        description: {{ api_dog.description }}
-        <a :href="api_dog.url" class="btn btn-outline-secondary">more</a>
-      </h4>
-
-      <h2>Rescue Agency:{{ organization.name }}</h2>
-      <h4>
-        location: {{ organization.address.address1 }}
-        <br />
-        {{ organization.address.address2 }}
-        <br />
-        {{ organization.address.city }},{{ organization.address.state }}
-      </h4>
-      <h4 v-if="api_dog.distance">distance: {{ api_dog.distance }}miles</h4>
-      <h4>
-        <a :href="organization.website" class="btn btn-outline-secondary">agency website</a>
-      </h4>
-      <h4>phone:{{ organization.phone }}</h4>
-      <h4>email:{{ organization.email }}</h4>
-      <div
-        v-if="
-          organization.hours.monday ||
-          organization.hours.tuesday ||
-          organization.hours.wednesday ||
-          organization.hours.thursday ||
-          organization.hours.friday ||
-          organization.hours.saturday ||
-          organization.hours.sunday
-        "
-      >
-        Agency Hours:
-        <h4 v-if="organization.hours.monday">Monday: {{ organization.hours.monday }}</h4>
-        <h4 v-if="organization.hours.tuesday">Tuesday: {{ organization.hours.tuesday }}</h4>
-        <h4 v-if="organization.hours.wednesday">Wednesday: {{ organization.hours.wednesday }}</h4>
-        <h4 v-if="organization.hours.thursday">Thursday: {{ organization.hours.thursday }}</h4>
-        <h4 v-if="organization.hours.friday">Friday: {{ organization.hours.friday }}</h4>
-        <h4 v-if="organization.hours.saturday">Saturday: {{ organization.hours.saturday }}</h4>
-        <h4 v-if="organization.hours.sunday">Sunday: {{ organization.hours.sunday }}</h4>
-      </div>
-
-      <h2>Training:</h2>
-      <h4 v-if="api_dog.attributes.house_trained === true">house trained</h4>
-      <h4 v-if="api_dog.attributes.house_trained === false">not house trained</h4>
-      <div
-        v-if="
-          api_dog.environment.dogs == true || api_dog.environment.cats == true || api_dog.environment.children == true
-        "
-      >
-        <h2>Good in a house with:</h2>
-        <h4 v-if="api_dog.environment.dogs === true">dogs</h4>
-        <h4 v-if="api_dog.environment.cats === true">cats</h4>
-        <h4 v-if="api_dog.environment.children === true">children</h4>
-      </div>
-      <div
-        v-if="
-          api_dog.environment.dogs == false ||
-          api_dog.environment.cats == false ||
-          api_dog.environment.children == false
-        "
-      >
-        <h2>Prefers a home without:</h2>
-        <h4 v-if="api_dog.environment.dogs === false">dogs</h4>
-        <h4 v-if="api_dog.environment.cats === false">cats</h4>
-        <h4 v-if="api_dog.environment.children === false">children</h4>
-      </div>
       <h2>Medical:</h2>
-      <h4 v-if="api_dog.attributes.shots_current === true">Vaccinations up to date</h4>
-      <h4 v-if="api_dog.attributes.shots_current === false">Some vaccinations needed</h4>
-      <h4 v-if="api_dog.attributes.spayed_neutered === true">spayed/neutered</h4>
-      <h4 v-if="api_dog.attributes.spayed_neutered === false">not spayed/neutered</h4>
-      <h1 v-if="api_dog.attributes.special_needs === true">special needs</h1>
+
       <div v-for="photo in api_dog.photos" v-bind:key="photo.id">
         <img :src="photo.medium" />
       </div>
@@ -91,8 +195,6 @@
     <router-link to="/api_dogs" class="btn btn-outline-secondary">back to matches</router-link>
   </div>
 </template>
-
-<style></style>
 
 <script>
 import axios from "axios";
