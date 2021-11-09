@@ -411,17 +411,6 @@
                       </label>
                     </div>
                   </div>
-                  <!-- <div class="container">
-                    <div>
-                      Are you interested in adopting a special needs dog?
-                      <input type="radio" v-model="editUserParams.special_needs" value="true" />
-                      Yes
-                      <input type="radio" v-model="editUserParams.special_needs" value="false" />
-                      No
-                      <input type="radio" v-model="editUserParams.special_needs" value="" />
-                      No preference
-                    </div>
-                  </div> -->
                   <input type="submit" class="btn btn-primary" value="Update Profile" />
                   <br />
                   <router-link to="/api_dogs" class="btn btn-outline-secondary">See Matches</router-link>
