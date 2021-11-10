@@ -1,6 +1,6 @@
 <template>
   <div class="signup">
-    <div id="content" class="pt-6 pb-6">
+    <div id="content" class="pt-6 pb-6 mt-6 mb-6">
       <div class="container">
         <form class="form-login form-wrapper form-medium" role="form" v-on:submit.prevent="submit()">
           <h3 class="title-divider">

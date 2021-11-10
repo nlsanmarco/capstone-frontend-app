@@ -2,7 +2,7 @@
   <div class="users-edit">
     <!-- ======== @Region: #content ======== -->
     <div id="content">
-      <div class="container">
+      <div class="container pt-2 pb-6">
         <div class="row">
           <!--main content-->
           <div class="col-md-12">
@@ -404,20 +404,20 @@
                       </label>
                     </div>
                   </div>
-                  <router-link to="/api_dogs" class="btn btn-link">
-                    <i class="fas fa-angle-right"></i>
-                    See Matches
-                  </router-link>
-                  <br />
-                  <div class="container">
-                    <div class="row">
-                      <div class="col-2"><input type="submit" class="btn btn-primary" value="Update Profile" /></div>
-                      <div class="col-9"></div>
-                      <div class="col-1">
-                        <button class="mb-2 btn btn-outline-danger" v-on:click="destroyUser()">
-                          <i class="far fa-trash-alt"></i>
-                        </button>
-                      </div>
+                </div>
+                <router-link to="/api_dogs" class="btn btn-link">
+                  See Matches
+                  <i class="fas fa-angle-right"></i>
+                </router-link>
+                <br />
+                <div class="container">
+                  <div class="row">
+                    <div class="col-2"><input type="submit" class="btn btn-primary" value="Update Profile" /></div>
+                    <div class="col-9"></div>
+                    <div class="col-1">
+                      <button class="mb-2 btn btn-outline-danger" v-on:click="destroyUser()">
+                        <i class="far fa-trash-alt"></i>
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -510,7 +510,7 @@ export default {
         .patch("/users/me", this.editUserParams)
         .then((response) => {
           console.log(response.data);
-          this.$parent.flashMessage = "Profile successfully updated";
+          this.$router.push("/api_dogs");
         })
         .catch((error) => {
           this.errors = error.response.data.errors;

@@ -1,7 +1,7 @@
 <template>
   <div class="agency-contact">
     <div id="content">
-      <div class="container">
+      <div class="container pt-2 pb-6">
         <div class="row">
           <!--main content-->
           <div class="col-md-9">

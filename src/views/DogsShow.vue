@@ -1,7 +1,7 @@
 <template>
   <div class="dogs-show">
     <div id="content">
-      <div class="container">
+      <div class="container pt-2 pb-6">
         <h2 class="title-divider">
           <span>
             Pupple

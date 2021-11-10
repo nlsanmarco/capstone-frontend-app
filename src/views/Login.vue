@@ -1,5 +1,5 @@
 <template>
-  <div id="content">
+  <div id="content" class="pt-6 pb-6 mt-6 mb-6">
     <div class="container">
       <!-- Login form -->
       <form class="form-login form-wrapper form-narrow" v-on:submit.prevent="submit()">
