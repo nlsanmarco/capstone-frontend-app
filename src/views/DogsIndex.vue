@@ -10,7 +10,9 @@
           <small>Aren't we cute?</small>
         </h2>
         <div class="form-group row mb-2">
-          <label for="ageFilter" class="col-md-4 col-form-label">Filter by age</label>
+          <label for="ageFilter" class="col-md-2 text-align-right align-self-center font-weight-light">
+            Filter by age
+          </label>
           <div class="col-md-4 col-8 mb-2">
             <input
               type="text"
@@ -45,16 +47,21 @@
                     </div>
                     <div class="mt-4">
                       <h4 class="timeline-item-title">
-                        <a href="#">{{ api_dog.name }}</a>
+                        <p class="lead font-weight-normal text-x2 text-primary">{{ api_dog.name }}</p>
                       </h4>
 
-                      <h4 class="timeline-item-description">Age: {{ api_dog.age }}</h4>
+                      <h4 class="timeline-item-description font-weight-lighter">Age: {{ api_dog.age }}</h4>
 
-                      <h4 class="timeline-item-description">Primary Breed: {{ api_dog.breeds.primary }}</h4>
-                      <h4 class="timeline-item-description" v-if="api_dog.breeds.secondary !== null">
+                      <h4 class="timeline-item-description font-weight-lighter">
+                        Primary Breed: {{ api_dog.breeds.primary }}
+                      </h4>
+                      <h4
+                        class="timeline-item-description font-weight-lighter"
+                        v-if="api_dog.breeds.secondary !== null"
+                      >
                         Secondary Breed: {{ api_dog.breeds.secondary }}
                       </h4>
-                      <h4 class="timeline-item-description">
+                      <h4 class="timeline-item-description font-weight-lighter">
                         Location: {{ api_dog.contact.address.city }}, {{ api_dog.contact.address.state }}
                       </h4>
                       <router-link class="btn btn-link" :to="`/api_dogs/${api_dog.id}`">
