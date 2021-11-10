@@ -81,7 +81,6 @@ export default {
         .post("/users", this.newUserParams)
         .then((response) => {
           console.log(response.data);
-          this.$parent.flashMessage = "User sucessfully created.";
           this.$router.push("/login");
         })
         .catch((error) => {

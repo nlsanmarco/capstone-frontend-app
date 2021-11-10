@@ -517,7 +517,7 @@ export default {
       if (confirm("Are you sure you want to delete this user?")) {
         axios.delete("/users/me").then((response) => {
           console.log(response.data);
-          this.$parent.flashMessage = "User successfully deleted.";
+
           this.$router.push("/login");
         });
       }

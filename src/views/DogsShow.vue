@@ -191,7 +191,10 @@
                         email:
                         <span class="font-weight-lighter">{{ organization.email }}</span>
                       </h5>
-                      <a :href="organization.website" class="btn btn-outline-primary">agency website</a>
+                      <a :href="organization.website" class="btn btn-outline-primary">
+                        <i class="fas fa-dog"></i>
+                        agency website
+                      </a>
                     </div>
                     <div class="col-4">
                       <div

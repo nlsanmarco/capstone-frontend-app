@@ -66,13 +66,13 @@
                   <li class="nav-link" v-if="isLoggedIn()">
                     <router-link to="/logout">Logout</router-link>
                   </li>
-                  <li class="nav-link">
+                  <li class="nav-link" v-if="isLoggedIn()">
                     <router-link :to="`/users/${getUserId()}/edit`">Edit Profile</router-link>
                   </li>
-                  <li class="nav-link">
+                  <li class="nav-link" v-if="isLoggedIn()">
                     <router-link to="/api_dogs">Dog Matches</router-link>
                   </li>
-                  <li class="nav-link">
+                  <li class="nav-link" v-if="isLoggedIn()">
                     <router-link to="/favorites">Favorites</router-link>
                   </li>
                 </ul>
@@ -84,10 +84,6 @@
       </div>
     </div>
 
-    <div v-if="flashMessage">
-      {{ flashMessage }}
-      <button v-on:click="flashMessage = ''">Close</button>
-    </div>
     <router-view />
   </div>
 </template>
@@ -95,9 +91,7 @@
 <script>
 export default {
   data: function () {
-    return {
-      flashMessage: "",
-    };
+    return {};
   },
   methods: {
     isLoggedIn: function () {
