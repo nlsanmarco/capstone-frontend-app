@@ -24,7 +24,7 @@
           <div class="header-inner container">
             <!--branding/logo -->
             <div class="header-brand">
-              <a class="header-brand-text" href="index.html" title="Home">
+              <a class="header-brand-text" title="Home">
                 <h1 class="h2">
                   <span class="header-brand-text-alt">TN</span>
                   Dog

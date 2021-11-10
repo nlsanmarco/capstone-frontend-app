@@ -10,12 +10,14 @@
           <small>The cutest of the cuties</small>
         </h2>
         <div class="form-group row mb-2">
-          <label for="ageFilter" class="col-md-4 col-form-label">Filter by age</label>
+          <label for="ageFilter" class="col-md-2 text-align-right align-self-center font-weight-light">
+            Filter by age or name
+          </label>
           <div class="col-md-4 col-8 mb-2">
             <input
               type="text"
               class="form-control"
-              placeholder="baby, young, adult or senior"
+              placeholder="baby, young, adult, senior or name"
               v-model="ageFilter"
               list="ages"
             />
@@ -45,16 +47,26 @@
                     </div>
                     <div class="mt-4">
                       <h4 class="timeline-item-title">
-                        <a href="#">{{ favorite.api_dog.name }}</a>
+                        <p class="lead font-weight-normal text-x2 text-primary">
+                          {{ favorite.api_dog.name }}
+                        </p>
                       </h4>
 
-                      <h4 class="timeline-item-description">Age: {{ favorite.api_dog.age }}</h4>
+                      <h4 class="timeline-item-description font-weight-lighter">
+                        Age:
+                        {{ favorite.api_dog.age }}
+                      </h4>
 
-                      <h4 class="timeline-item-description">Primary Breed: {{ favorite.api_dog.breeds.primary }}</h4>
-                      <h4 class="timeline-item-description" v-if="favorite.api_dog.breeds.secondary !== null">
+                      <h4 class="timeline-item-description font-weight-lighter">
+                        Primary Breed: {{ favorite.api_dog.breeds.primary }}
+                      </h4>
+                      <h4
+                        class="timeline-item-description font-weight-lighter"
+                        v-if="favorite.api_dog.breeds.secondary !== null"
+                      >
                         Secondary Breed: {{ favorite.api_dog.breeds.secondary }}
                       </h4>
-                      <h4 class="timeline-item-description">
+                      <h4 class="timeline-item-description font-weight-lighter">
                         Location: {{ favorite.api_dog.contact.address.city }},
                         {{ favorite.api_dog.contact.address.state }}
                       </h4>
@@ -62,10 +74,16 @@
                         <i class="fa fa-arrow-circle-right"></i>
                         Read more
                       </router-link>
-
-                      <router-link to="/api_dogs" class="btn btn-outline-secondary">back to matches</router-link>
                       <br />
-                      <button v-on:click="removeFavorite(favorite)">remove from favorites</button>
+                      <router-link to="/api_dogs" class="btn btn-link">
+                        <i class="fas fa-angle-left"></i>
+                        back to matches
+                      </router-link>
+                      <br />
+                      <button class="btn btn-link text-red-dark" v-on:click="removeFavorite(favorite)">
+                        <i class="fas fa-heart-broken"></i>
+                        remove {{ favorite.api_dog.name }}
+                      </button>
                     </div>
                   </div>
                 </div>
