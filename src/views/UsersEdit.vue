@@ -369,13 +369,6 @@
                     </label>
                     <div class="form-check">
                       <label class="form-check-label">
-                        <!-- <input
-                        type="checkbox"
-                        data-toggle="switch"
-                        checked
-                        data-on-color="primary"
-                        data-off-color="default"
-                      /> -->
                         <input
                           type="radio"
                           class="form-check-input"
@@ -411,11 +404,22 @@
                       </label>
                     </div>
                   </div>
-                  <input type="submit" class="btn btn-primary" value="Update Profile" />
+                  <router-link to="/api_dogs" class="btn btn-link">
+                    <i class="fas fa-angle-right"></i>
+                    See Matches
+                  </router-link>
                   <br />
-                  <router-link to="/api_dogs" class="btn btn-outline-secondary">See Matches</router-link>
-                  <br />
-                  <button class="mb-2 btn btn-outline-danger" v-on:click="destroyUser()">Delete User</button>
+                  <div class="container">
+                    <div class="row">
+                      <div class="col-2"><input type="submit" class="btn btn-primary" value="Update Profile" /></div>
+                      <div class="col-9"></div>
+                      <div class="col-1">
+                        <button class="mb-2 btn btn-outline-danger" v-on:click="destroyUser()">
+                          <i class="far fa-trash-alt"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </form>
@@ -423,7 +427,6 @@
         </div>
       </div>
     </div>
-    editUserParams: {{ editUserParams }}
   </div>
 </template>
 
