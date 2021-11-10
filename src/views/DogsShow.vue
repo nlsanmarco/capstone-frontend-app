@@ -23,20 +23,8 @@
 
               <div class="row">
                 <div class="col-md-4 img-fluid">
-                  <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-                    <div class="carousel-inner">
-                      <div v-for="photo in api_dog.photos" v-bind:key="photo.id" :class="{ active: api_dog.photos[0] }">
-                        <img class="d-block w-100" :src="photo.medium" alt="Dog Image" />
-                      </div>
-                    </div>
-                    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                      <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                      <span class="sr-only">Next</span>
-                    </a>
+                  <div>
+                    <img :src="api_dog.photos[0].medium" />
                   </div>
                 </div>
                 <div class="col">
@@ -158,26 +146,29 @@
                       Special Needs
                     </li>
                   </ul>
-                  <button class="btn btn-link text-red-dark" v-on:click="makeFavorite()">
-                    <i class="far fa-heart"></i>
-                    make {{ api_dog.name }} a favorite
-                  </button>
+                  <div v-if="api_dog.favorite_dog === false">
+                    <button class="btn btn-link text-red-dark" v-on:click="makeFavorite()">
+                      <i class="far fa-heart"></i>
+                      make {{ api_dog.name }} a favorite
+                    </button>
+                  </div>
                 </div>
                 <div class="col-md-8">
                   <h4><span>Rescue Agency</span></h4>
                   <div class="row">
                     <div class="col-6">
+                      <br />
                       <h5>
                         {{ organization.name }}
                       </h5>
-                      <br />
+
                       <h5>
                         location:
                         <div v-if="organization.address.address1">
-                          {{ organization.address.address1 }}
+                          <span class="font-weight-lighter">{{ organization.address.address1 }}</span>
                         </div>
                         <div v-if="organization.address.address2">
-                          {{ organization.address.address2 }}
+                          <span class="font-weight-lighter">{{ organization.address.address2 }}</span>
                         </div>
                         <span class="font-weight-lighter">
                           {{ organization.address.city }},{{ organization.address.state }}
@@ -195,6 +186,9 @@
                         <i class="fas fa-dog"></i>
                         agency website
                       </a>
+                      <br />
+                      <br />
+                      <router-link to="/contact" class="btn btn-outline-secondary">contact agency</router-link>
                     </div>
                     <div class="col-4">
                       <div
@@ -247,11 +241,7 @@
         </div>
       </div>
     </div>
-    <div>
-      <div v-for="photo in api_dog.photos" v-bind:key="photo.id">
-        <img :src="photo.medium" />
-      </div>
-    </div>
+    <div></div>
   </div>
 </template>
 

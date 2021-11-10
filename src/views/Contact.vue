@@ -8,17 +8,15 @@
             <h2 class="title-divider">
               <span>
                 Contact
-                <span class="font-weight-normal text-muted">Us</span>
+                <span class="font-weight-normal text-muted">Rescue Agency</span>
               </span>
-              <small>Ways To Get In Touch</small>
             </h2>
             <div class="row">
               <div class="col-md-12">
                 <form id="contact-form" action="#" role="form">
                   <div class="form-group">
-                    <label class="sr-only" for="contact-name">Name</label>
+                    <label class="sr-only" for="contact-name">{{ userParams.name }}</label>
                     <input type="text" class="form-control" id="contact-name" placeholder="Name" />
-                    <small id="contact-name-help" class="form-text text-muted">First and last names.</small>
                   </div>
                   <div class="form-group">
                     <label class="sr-only" for="contact-email">Email</label>
@@ -42,3 +40,47 @@
     </div>
   </div>
 </template>
+
+<script>
+import axios from "axios";
+export default {
+  data: function () {
+    return {
+      userParams: {},
+      organization: {
+        name: "",
+        email: "",
+        phone: "",
+        address: {
+          address1: "",
+          address2: "",
+          city: "",
+          state: "",
+          postcode: "",
+        },
+        hours: {
+          monday: "",
+          tuesday: "",
+          wednesday: "",
+          thursday: "",
+          friday: "",
+          saturday: "",
+          sunday: "",
+        },
+        website: "",
+      },
+    };
+  },
+  created: function () {
+    // axios.get(`/organizations/${this.$route.params.organization_id}`).then((response) => {
+    //   this.organization = response.data;
+    //   console.log(this.organization);
+    // });
+    axios.get("/users/me").then((response) => {
+      console.log(response.data);
+      this.userParams = response.data;
+    });
+  },
+  methods: {},
+};
+</script>
