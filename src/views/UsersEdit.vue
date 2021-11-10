@@ -9,6 +9,12 @@
             <form v-on:submit.prevent="editUser()" id="contact-form" role="form">
               <h2 class="title-divider">
                 <span>Edit User</span>
+                <small>
+                  <router-link to="/api_dogs">
+                    see matches
+                    <i class="fas fa-angle-right"></i>
+                  </router-link>
+                </small>
               </h2>
               <ul>
                 <li v-for="error in errors" v-bind:key="error">{{ error }}</li>
@@ -405,15 +411,10 @@
                     </div>
                   </div>
                 </div>
-                <router-link to="/api_dogs" class="btn btn-link">
-                  See Matches
-                  <i class="fas fa-angle-right"></i>
-                </router-link>
-                <br />
                 <div class="container">
                   <div class="row">
-                    <div class="col-2"><input type="submit" class="btn btn-primary" value="Update Profile" /></div>
                     <div class="col-9"></div>
+                    <div class="col-2"><input type="submit" class="btn btn-primary" value="Update Profile" /></div>
                     <div class="col-1">
                       <button class="mb-2 btn btn-outline-danger" v-on:click="destroyUser()">
                         <i class="far fa-trash-alt"></i>

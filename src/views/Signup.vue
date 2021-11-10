@@ -55,7 +55,7 @@
               v-model="newUserParams.password_confirmation"
             />
           </div>
-          <input type="submit" value="Sign Up" />
+          <input type="submit" value="Sign Up" class="btn btn-primary" />
         </form>
       </div>
     </div>
