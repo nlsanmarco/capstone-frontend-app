@@ -42,15 +42,31 @@
                 <div class="col">
                   <div class="col-12">
                     <h3 class="title media-heading">{{ api_dog.name }}</h3>
-                    <p>age: {{ api_dog.age }}</p>
-                    <p>primary breed: {{ api_dog.breeds.primary }}</p>
-                    <p v-if="api_dog.breeds.secondary !== null">secondary breed: {{ api_dog.breeds.secondary }}</p>
-                    <p>gender: {{ api_dog.gender }}</p>
-                    <p>size: {{ api_dog.size }}</p>
-                    <p>
-                      description: {{ api_dog.description }}
-                      <a :href="api_dog.url" class="btn btn-outline-secondary">more</a>
-                    </p>
+                    <h4>
+                      age:
+                      <span class="font-weight-lighter">{{ api_dog.age }}</span>
+                    </h4>
+                    <h4>
+                      primary breed:
+                      <span class="font-weight-lighter">{{ api_dog.breeds.primary }}</span>
+                    </h4>
+                    <h4 v-if="api_dog.breeds.secondary !== null">
+                      secondary breed:
+                      <span class="font-weight-lighter">{{ api_dog.breeds.secondary }}</span>
+                    </h4>
+                    <h4>
+                      gender:
+                      <span class="font-weight-lighter">{{ api_dog.gender }}</span>
+                    </h4>
+                    <h4>
+                      size:
+                      <span class="font-weight-lighter">{{ api_dog.size }}</span>
+                    </h4>
+                    <h4>
+                      description:
+                      <span class="font-weight-lighter">{{ api_dog.description }}</span>
+                      <a :href="api_dog.url" class="btn btn-link">more</a>
+                    </h4>
                   </div>
                 </div>
               </div>
@@ -59,7 +75,7 @@
           <div class="row">
             <div class="col-md-12">
               <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-4">
                   <div v-if="api_dog.attributes.house_trained">
                     <h5>Training:</h5>
                     <ul class="list-unstyled list-md">
@@ -142,58 +158,85 @@
                       Special Needs
                     </li>
                   </ul>
-                  <div v-if="api_dog.favorite_dog === false">
-                    <button v-on:click="makeFavorite()">Favorite</button>
-                  </div>
-                  <br />
-                  <router-link to="/api_dogs" class="btn btn-outline-secondary">back to matches</router-link>
+                  <button class="btn btn-link text-red-dark" v-on:click="makeFavorite()">
+                    <i class="far fa-heart"></i>
+                    make {{ api_dog.name }} a favorite
+                  </button>
                 </div>
-                <div class="col-md-6">
-                  <h4><span class="font-weight-bold">Rescue Agency</span></h4>
-                  <p>
-                    {{ organization.name }}
-                    <br />
-                  </p>
-                  location:
-                  <div v-if="organization.address.address1">
-                    {{ organization.address.address1 }}
+                <div class="col-md-8">
+                  <h4><span>Rescue Agency</span></h4>
+                  <div class="row">
+                    <div class="col-6">
+                      <h5>
+                        {{ organization.name }}
+                      </h5>
+                      <br />
+                      <h5>
+                        location:
+                        <div v-if="organization.address.address1">
+                          {{ organization.address.address1 }}
+                        </div>
+                        <div v-if="organization.address.address2">
+                          {{ organization.address.address2 }}
+                        </div>
+                        <span class="font-weight-lighter">
+                          {{ organization.address.city }},{{ organization.address.state }}
+                        </span>
+                      </h5>
+                      <h5>
+                        phone:
+                        <span class="font-weight-lighter">{{ organization.phone }}</span>
+                      </h5>
+                      <h5>
+                        email:
+                        <span class="font-weight-lighter">{{ organization.email }}</span>
+                      </h5>
+                      <a :href="organization.website" class="btn btn-outline-primary">agency website</a>
+                    </div>
+                    <div class="col-4">
+                      <div
+                        v-if="
+                          organization.hours.monday ||
+                          organization.hours.tuesday ||
+                          organization.hours.wednesday ||
+                          organization.hours.thursday ||
+                          organization.hours.friday ||
+                          organization.hours.saturday ||
+                          organization.hours.sunday
+                        "
+                      >
+                        <h5>Agency Hours:</h5>
+                        <h5 v-if="organization.hours.monday">
+                          Monday:
+                          <span class="font-weight-lighter">{{ organization.hours.monday }}</span>
+                        </h5>
+                        <h5 v-if="organization.hours.tuesday">
+                          Tuesday:
+                          <span class="font-weight-lighter">{{ organization.hours.tuesday }}</span>
+                        </h5>
+                        <h5 v-if="organization.hours.wednesday">
+                          Wednesday:
+                          <span class="font-weight-lighter">{{ organization.hours.wednesday }}</span>
+                        </h5>
+                        <h5 v-if="organization.hours.thursday">
+                          Thursday:
+                          <span class="font-weight-lighter">{{ organization.hours.thursday }}</span>
+                        </h5>
+                        <h5 v-if="organization.hours.friday">
+                          Friday:
+                          <span class="font-weight-lighter">{{ organization.hours.friday }}</span>
+                        </h5>
+                        <h5 v-if="organization.hours.saturday">
+                          Saturday:
+                          <span class="font-weight-lighter">{{ organization.hours.saturday }}</span>
+                        </h5>
+                        <h5 v-if="organization.hours.sunday">
+                          Sunday:
+                          <span class="font-weight-lighter">{{ organization.hours.sunday }}</span>
+                        </h5>
+                      </div>
+                    </div>
                   </div>
-                  <div v-if="organization.address.address2">
-                    {{ organization.address.address2 }}
-                  </div>
-                  {{ organization.address.city }},{{ organization.address.state }}
-                  <br />
-                  <br />
-                  <p>
-                    phone:{{ organization.phone }}
-                    <br />
-                    email:{{ organization.email }}
-                  </p>
-                  <div
-                    v-if="
-                      organization.hours.monday ||
-                      organization.hours.tuesday ||
-                      organization.hours.wednesday ||
-                      organization.hours.thursday ||
-                      organization.hours.friday ||
-                      organization.hours.saturday ||
-                      organization.hours.sunday
-                    "
-                  >
-                    <br />
-                    Agency Hours:
-                    <h4 v-if="organization.hours.monday">Monday: {{ organization.hours.monday }}</h4>
-                    <h4 v-if="organization.hours.tuesday">Tuesday: {{ organization.hours.tuesday }}</h4>
-                    <h4 v-if="organization.hours.wednesday">Wednesday: {{ organization.hours.wednesday }}</h4>
-                    <h4 v-if="organization.hours.thursday">Thursday: {{ organization.hours.thursday }}</h4>
-                    <h4 v-if="organization.hours.friday">Friday: {{ organization.hours.friday }}</h4>
-                    <h4 v-if="organization.hours.saturday">Saturday: {{ organization.hours.saturday }}</h4>
-                    <h4 v-if="organization.hours.sunday">Sunday: {{ organization.hours.sunday }}</h4>
-                  </div>
-                  <br />
-
-                  <a :href="organization.website" class="btn btn-outline-secondary">agency website</a>
-                  <br />
                 </div>
               </div>
             </div>
@@ -206,7 +249,6 @@
         <img :src="photo.medium" />
       </div>
     </div>
-    <br />
   </div>
 </template>
 
