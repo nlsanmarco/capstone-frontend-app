@@ -66,10 +66,6 @@
                 </div>
               </div>
             </div>
-
-            <div class="pagination d-block">
-              <button type="button" class="btn btn-secondary btn-lg btn-block">Load More</button>
-            </div>
           </div>
         </div>
       </div>

@@ -24,8 +24,20 @@
 
                 <!--Main content of post-->
                 <div class="blog-content">
-                  <div class="blog-media">
-                    <img src="assets/img/blog/ape.jpg" alt="Picture of frog by Ben Fredericson" class="img-fluid" />
+                  <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                      <div v-for="photo in api_dog.photos" v-bind:key="photo.id" :class="{ active: api_dog.photos[0] }">
+                        <img class="d-block w-100" :src="photo.medium" alt="Dog Image" />
+                      </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="sr-only">Next</span>
+                    </a>
                   </div>
                   <p>age: {{ api_dog.age }}</p>
                   <p>primary breed: {{ api_dog.breeds.primary }}</p>
@@ -88,6 +100,12 @@
                   <br />
 
                   <a :href="organization.website" class="btn btn-outline-secondary">agency website</a>
+                  <br />
+                  <div v-if="api_dog.favorite_dog === false">
+                    <button v-on:click="makeFavorite()">Favorite</button>
+                  </div>
+                  <br />
+                  <router-link to="/api_dogs" class="btn btn-outline-secondary">back to matches</router-link>
                 </div>
                 <div class="col-md-6">
                   <div v-if="api_dog.attributes.house_trained">
@@ -181,18 +199,11 @@
       </div>
     </div>
     <div>
-      <h2>Medical:</h2>
-
       <div v-for="photo in api_dog.photos" v-bind:key="photo.id">
         <img :src="photo.medium" />
       </div>
     </div>
     <br />
-    <div v-if="api_dog.favorite_dog === false">
-      <button v-on:click="makeFavorite()">Favorite</button>
-    </div>
-    <br />
-    <router-link to="/api_dogs" class="btn btn-outline-secondary">back to matches</router-link>
   </div>
 </template>
 

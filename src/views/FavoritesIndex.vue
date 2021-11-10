@@ -1,33 +1,83 @@
 <template>
   <div class="favorites-index">
-    <p class="col-md-8 fs-4">Search by age (baby, young, adult or senior) or by name</p>
-    <div class="row">
-      <div class="col-md-12 col-lg-8 mb-2">
-        <input type="text" class="form-control" placeholder="Search" v-model="ageFilter" list="ages" />
+    <div id="content">
+      <div class="container">
+        <h2 class="title-divider">
+          <span>
+            Your
+            <span class="font-weight-normal text-muted">Favorites</span>
+          </span>
+          <small>The cutest of the cuties</small>
+        </h2>
+        <div class="form-group row mb-2">
+          <label for="ageFilter" class="col-md-4 col-form-label">Filter by age</label>
+          <div class="col-md-4 col-8 mb-2">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="baby, young, adult or senior"
+              v-model="ageFilter"
+              list="ages"
+            />
+          </div>
+        </div>
+
+        <div class="row">
+          <!--Blog Grid -->
+          <div class="col-md-auto">
+            <div
+              class="blog-roll blog-grid"
+              data-toggle="isotope-grid"
+              data-isotope-options='{"itemSelector": ".grid-item"}'
+            >
+              <div class="row">
+                <!--Timeline item 1-->
+                <div
+                  class="col-sm-6 col-md-4 grid-item"
+                  v-for="favorite in filterBy(favorites, ageFilter, 'api_dog.age', 'api_dog.name')"
+                  v-bind:key="favorite.id"
+                >
+                  <div class="blog-post">
+                    <div class="blog-media">
+                      <router-link :to="`/api_dogs/${favorite.api_dog.id}`">
+                        <img class="img-fluid" :src="favorite.api_dog.photos[0].large" />
+                      </router-link>
+                    </div>
+                    <div class="mt-4">
+                      <h4 class="timeline-item-title">
+                        <a href="#">{{ favorite.api_dog.name }}</a>
+                      </h4>
+
+                      <h4 class="timeline-item-description">Age: {{ favorite.api_dog.age }}</h4>
+
+                      <h4 class="timeline-item-description">Primary Breed: {{ favorite.api_dog.breeds.primary }}</h4>
+                      <h4 class="timeline-item-description" v-if="favorite.api_dog.breeds.secondary !== null">
+                        Secondary Breed: {{ favorite.api_dog.breeds.secondary }}
+                      </h4>
+                      <h4 class="timeline-item-description">
+                        Location: {{ favorite.api_dog.contact.address.city }},
+                        {{ favorite.api_dog.contact.address.state }}
+                      </h4>
+                      <router-link class="btn btn-link" :to="`/api_dogs/${favorite.api_dog.id}`">
+                        <i class="fa fa-arrow-circle-right"></i>
+                        Read more
+                      </router-link>
+
+                      <router-link to="/api_dogs" class="btn btn-outline-secondary">back to matches</router-link>
+                      <br />
+                      <button v-on:click="removeFavorite(favorite)">remove from favorites</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-    <h1>Your Favorites</h1>
-    <div v-for="favorite in filterBy(favorites, ageFilter, 'api_dog.age', 'api_dog.name')" v-bind:key="favorite.id">
-      <h2>Name: {{ favorite.api_dog.name }}</h2>
-      <h4>Age: {{ favorite.api_dog.age }}</h4>
-      <h4>Primary Breed: {{ favorite.api_dog.breeds.primary }}</h4>
-      <h4 v-if="favorite.api_dog.breeds.secondary !== null">
-        Secondary Breed: {{ favorite.api_dog.breeds.secondary }}
-      </h4>
-      <h4>Location: {{ favorite.api_dog.contact.address.city }}, {{ favorite.api_dog.contact.address.state }}</h4>
-      <router-link :to="`/api_dogs/${favorite.api_dog.id}`">
-        <img :src="favorite.api_dog.primary_photo_cropped.small" />
-      </router-link>
-      <br />
-      <router-link to="/api_dogs" class="btn btn-outline-secondary">back to matches</router-link>
-      <br />
-      <button v-on:click="removeFavorite(favorite)">remove from favorites</button>
-      {{ favorite.id }}
+      <!--.container-->
     </div>
   </div>
 </template>
-
-<style></style>
 
 <script>
 import axios from "axios";
