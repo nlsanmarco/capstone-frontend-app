@@ -190,9 +190,7 @@
                           </a>
                         </div>
 
-                        <div class="col">
-                          <router-link to="/contact" class="btn btn-outline-secondary">contact agency</router-link>
-                        </div>
+                        <div class="col">2 of 2</div>
                       </div>
                     </div>
                     <div class="col-4">
@@ -240,6 +238,18 @@
                         </h5>
                       </div>
                     </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div v-if="api_dog.photos.length > 1" class="row">
+            <div class="post-related-content">
+              <h4>More Photos</h4>
+              <div class="row">
+                <div v-for="photo in api_dog.photos" v-bind:key="photo.id" class="col-md-4 blog-post">
+                  <div class="blog-media">
+                    <img :src="photo.medium" alt="Picture of frog by Ben Fredericson" class="img-fluid" />
                   </div>
                 </div>
               </div>
