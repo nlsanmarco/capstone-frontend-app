@@ -182,15 +182,22 @@
                         email:
                         <span class="font-weight-lighter">{{ organization.email }}</span>
                       </h5>
-                      <a :href="organization.website" class="btn btn-outline-primary">
-                        <i class="fas fa-dog"></i>
-                        agency website
-                      </a>
-                      <br />
-                      <br />
-                      <router-link to="/contact" class="btn btn-outline-secondary">contact agency</router-link>
+                      <div class="row">
+                        <div class="col">
+                          <a :href="organization.website" class="btn btn-outline-primary">
+                            <i class="fas fa-dog"></i>
+                            agency website
+                          </a>
+                        </div>
+
+                        <div class="col">
+                          <router-link to="/contact" class="btn btn-outline-secondary">contact agency</router-link>
+                        </div>
+                      </div>
                     </div>
                     <div class="col-4">
+                      <br />
+                      <br />
                       <div
                         v-if="
                           organization.hours.monday ||
