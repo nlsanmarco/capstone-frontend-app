@@ -84,7 +84,10 @@
       </div>
     </div>
     <router-view />
-
+    <div v-if="flashMessage">
+      {{ flashMessage }}
+      <button v-on:click="flashMessage = ''">Close</button>
+    </div>
     <!-- ======== @Region: #footer ======== -->
     <footer id="footer" class="p-2">
       <div class="container pt-6 pb-6 mb-6 mt-6"></div>
@@ -96,7 +99,9 @@
 <script>
 export default {
   data: function () {
-    return {};
+    return {
+      flashMessage: "",
+    };
   },
   methods: {
     isLoggedIn: function () {

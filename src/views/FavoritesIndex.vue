@@ -10,7 +10,7 @@
           <small>The cutest of the cuties</small>
         </h2>
         <div class="form-group row mb-2">
-          <label for="ageFilter" class="col-md-2 text-align-right align-self-center font-weight-light">
+          <label for="ageFilter" class="col-md-3 text-align-right align-self-center font-weight-light">
             Filter by age or name
           </label>
           <div class="col-md-4 col-8 mb-2">
@@ -105,6 +105,7 @@ export default {
   data: function () {
     return {
       ageFilter: "",
+      flashMessage: "",
       favorites: [
         {
           api_dog: {
@@ -166,6 +167,9 @@ export default {
     axios.get("/favorites").then((response) => {
       console.log(response.data);
       this.favorites = response.data;
+      if (this.favorites === null) {
+        this.$parent.flashMessage = "No dogs have been added to your favorites yet!";
+      }
     });
   },
   methods: {
