@@ -167,7 +167,7 @@ export default {
     axios.get("/favorites").then((response) => {
       console.log(response.data);
       this.favorites = response.data;
-      if (this.favorites === null) {
+      if (this.favorites.length === 0) {
         this.$parent.flashMessage = "No dogs have been added to your favorites yet!";
       }
     });

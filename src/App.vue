@@ -84,9 +84,11 @@
       </div>
     </div>
     <router-view />
-    <div v-if="flashMessage">
-      {{ flashMessage }}
-      <button v-on:click="flashMessage = ''">Close</button>
+    <div class="container">
+      <div v-if="flashMessage">
+        {{ flashMessage }}
+        <button v-on:click="flashMessage = ''">Close</button>
+      </div>
     </div>
     <!-- ======== @Region: #footer ======== -->
     <footer id="footer" class="p-2">
