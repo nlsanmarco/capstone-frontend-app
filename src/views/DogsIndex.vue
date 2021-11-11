@@ -39,7 +39,7 @@
                   v-for="api_dog in filterBy(api_dogs, ageFilter, 'age')"
                   v-bind:key="api_dog.id"
                 >
-                  <div v-if="api_dog.photos.length !== 0">
+                  <div v-if="api_dog.photos.length != 0">
                     <div class="blog-post">
                       <div class="blog-media">
                         <router-link :to="`/api_dogs/${api_dog.id}`">

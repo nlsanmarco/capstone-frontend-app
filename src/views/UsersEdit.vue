@@ -522,7 +522,7 @@ export default {
         axios.delete("/users/me").then((response) => {
           console.log(response.data);
           localStorage.clear();
-          this.$router.push("/login");
+          this.$router.push("/signup");
         });
       }
     },
