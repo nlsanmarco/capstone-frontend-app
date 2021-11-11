@@ -23,7 +23,11 @@
             />
           </div>
         </div>
-
+        <div class="row justify-content-center pt-4" v-if="!api_dogs[0].name">
+          <div class="spinner-border text-primary" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+        </div>
         <div class="row">
           <!--Blog Grid -->
           <div class="col-md-auto">
